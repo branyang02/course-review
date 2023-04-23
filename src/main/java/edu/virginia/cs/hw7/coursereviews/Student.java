@@ -1,24 +1,24 @@
 package edu.virginia.cs.hw7.coursereviews;
 
 public class Student {
-    private String name;
+    private String id;
     private String password;
 
-    public Student(String name, String password) {
-        this.name = name;
+    public Student(String id, String password) {
+        this.id = id;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setPassword(String password) {
@@ -26,6 +26,6 @@ public class Student {
     }
 
     public String toString() {
-        return "Student: " + name;
+        return "Student: " + id;
     }
 }

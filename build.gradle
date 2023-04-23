@@ -1,20 +1,14 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.javamodularity.moduleplugin' version '1.8.12'
     id 'org.openjfx.javafxplugin' version '0.0.13'
-    id 'org.beryx.jlink' version '2.25.0'
+    id 'org.beryx.jlink' version '2.24.1'
 }
 
-group 'edu.virginia.cs.hw7'
-version '1.0-SNAPSHOT'
+group 'edu.virginia.cs.coursereview'
 
 repositories {
     mavenCentral()
-}
-
-ext {
-    junitVersion = '5.9.1'
 }
 
 sourceCompatibility = '17'
@@ -25,8 +19,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'edu.virginia.cs.hw7.coursereviewgui'
-    mainClass = 'edu.virginia.cs.hw7.coursereviewgui.HelloApplication'
+    mainModule = 'edu.virginia.cs'
+    mainClass = 'edu.virginia.cs.gui.WordleApplication'
 }
 
 javafx {
@@ -36,12 +30,8 @@ javafx {
 
 dependencies {
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '4.8.0'
-    implementation group: 'org.json', name: 'json', version: '20220924'
-    implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.36.0.3'
-    implementation('org.controlsfx:controlsfx:11.1.2')
-
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
 test {

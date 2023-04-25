@@ -10,12 +10,14 @@ public class ReviewsManager {
     }
 
     public void addReview(Review review) {
+        int studentID = getStudentID(review.getStudent());
+        int courseID = getCourseID(review.getCourse());
         db.connect();
         try {
             PreparedStatement statement = db.connection.prepareStatement(
                     "INSERT INTO reviews (student_id, course_id, rating, comment) VALUES (?, ?, ?, ?)");
-            statement.setInt(1, getStudentID(review.getStudent()));
-            statement.setInt(2, getCourseID(review.getCourse()));
+            statement.setInt(1, studentID);
+            statement.setInt(2, courseID);
             statement.setInt(3, review.getRating());
             statement.setString(4, review.getComment());
             statement.executeUpdate();

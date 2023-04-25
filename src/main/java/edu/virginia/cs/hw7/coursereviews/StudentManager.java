@@ -1,9 +1,6 @@
 package edu.virginia.cs.hw7.coursereviews;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class StudentManager {
     private final DatabaseManager db;
@@ -51,6 +48,7 @@ public class StudentManager {
         }
     }
 
+
     public void clearStudents() {
         db.connect();
         try {
@@ -58,77 +56,6 @@ public class StudentManager {
             statement.executeUpdate("DELETE FROM students");
             db.connection.commit();
             System.out.println("All students have been deleted from the database.");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            db.disconnect();
-        }
-    }
-
-
-    public boolean login(Student student) {
-        //check if the student's username and password are in the database
-        db.connect();
-        try {
-            PreparedStatement selectStatement = db.connection.prepareStatement(
-                    "SELECT * FROM students WHERE NAME = ? AND PASSWORD = ?");
-            selectStatement.setString(1, student.getName());
-            selectStatement.setString(2, student.getPassword());
-            ResultSet result = selectStatement.executeQuery();
-            // Student with the same name and password exists in students table
-            return result.next();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            db.disconnect();
-        }
-    }
-
-    public boolean checkStudent(Student student) {
-        //check if the student's username is in the database
-        db.connect();
-        try {
-            PreparedStatement selectStatement = db.connection.prepareStatement(
-                    "SELECT * FROM students WHERE NAME = ?");
-            selectStatement.setString(1, student.getName());
-            ResultSet result = selectStatement.executeQuery();
-            // Student with the same name exists in students table
-            return result.next();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            db.disconnect();
-        }
-    }
-
-    public boolean verifyStudent(Student student) {
-        db.connect();
-        try {
-            PreparedStatement selectStatement = db.connection.prepareStatement(
-                    "SELECT * FROM students WHERE NAME = ? AND PASSWORD = ?");
-            selectStatement.setString(1, student.getName());
-            selectStatement.setString(2, student.getPassword());
-            ResultSet result = selectStatement.executeQuery();
-            // Student with the same name and password exists in students table
-            return result.next();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            db.disconnect();
-        }
-    }
-    public Student getStudent(String studentID) {
-        db.connect();
-        try {
-            PreparedStatement statement = db.connection.prepareStatement(
-                    "SELECT * FROM students WHERE id = ?");
-            statement.setString(1, studentID);
-            ResultSet result = statement.executeQuery();
-            if (result.next()) {
-                return new Student(result.getString("name"), result.getString("password"));
-            } else {
-                return null;
-            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

@@ -30,6 +30,25 @@ public class ReviewsManager {
         }
     }
 
+    public void removeReview(Review review) {
+        int studentID = getStudentID(review.getStudent());
+        int courseID = getCourseID(review.getCourse());
+        db.connect();
+        try {
+            PreparedStatement statement = db.connection.prepareStatement(
+                    "DELETE FROM reviews WHERE student_id = ? AND course_id = ?");
+            statement.setInt(1, studentID);
+            statement.setInt(2, courseID);
+            statement.executeUpdate();
+            db.connection.commit();
+            System.out.println("Review removed from the database.");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
+    }
+
     public void clearReviews() {
         db.connect();
         try {

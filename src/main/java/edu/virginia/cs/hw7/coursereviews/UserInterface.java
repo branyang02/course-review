@@ -2,18 +2,11 @@ package edu.virginia.cs.hw7.coursereviews;
 
 import java.util.Scanner;
 public class UserInterface {
-
-    private final StudentManager studentManager;
-    private final CourseManager classManager;
-    private final ReviewsManager reviewManager;
-
+    public final CourseReviews courseReviews;
     public UserInterface() {
-        DatabaseManager db = new DatabaseManager();
-        studentManager = new StudentManager(db);
-        classManager = new CourseManager(db);
-        reviewManager = new ReviewsManager(db);
+        courseReviews = new CourseReviews();
     }
-    public void showLoginActions() {
+    private void showLoginActions() {
         System.out.println("1. Login");
         System.out.println("2. Register");
         System.out.println("3. Exit");
@@ -31,7 +24,7 @@ public class UserInterface {
             System.out.println("Passwords do not match.");
             return;
         }
-        if (studentManager.register(new Student(username, password))) {
+        if (courseReviews.register(new Student(username, password))) {
             System.out.println("Registration successful!");
             showMainMenu();
         } else {
@@ -44,7 +37,7 @@ public class UserInterface {
         String username = scanner.nextLine();
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
-        if (studentManager.login(new Student(username, password))) {
+        if (courseReviews.login(new Student(username, password))) {
             System.out.println("Login successful!");
             showMainMenu();
         } else {
@@ -75,9 +68,35 @@ public class UserInterface {
             }
         }
     }
-    private void submitReview() { /* ... */ }
-    private String[] getCourseName(String input) { /* ... */
-        return new String[0];
+    private void submitReview() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the course name and number:");
+        String className = scanner.nextLine().trim();
+        String[] courseInfo = getCourseInfo(className);
+        System.out.println("Enter your review:");
+        String review = scanner.nextLine();
+        System.out.println("Enter your rating (1-5):");
+        int rating = scanner.nextInt();
+//        if (reviewManager.submitReview(new Review(new Student(), new Course(courseInfo[0], courseInfo[1]), review, rating))) {
+//            System.out.println("Review submitted successfully!");
+//        } else {
+//            System.out.println("Review submission failed. The course does not exist.");
+//        }
+    }
+    private String[] getCourseInfo(String input) {
+        try {
+            String[] courseInfo = input.split(" ");
+            String subject = courseInfo[0];
+            if (subject.length() < 2 || subject.length() > 4) {
+                System.out.println("Invalid course name");
+                return null;
+            }
+            String catalogNumber = courseInfo[1];
+            return new String[]{subject, catalogNumber};
+        } catch (Exception e) {
+            System.out.println("Invalid course name and number.");
+            return null;
+        }
     }
     private void seeReviews() { /* ... */ }
     private void printCourseReviews(String subject, String catalogNumber) { /* ... */ }
@@ -86,25 +105,30 @@ public class UserInterface {
         startApplication();
     }
 
-    public static void main(String[] args) {
-        startApplication();
-    }
-
-    private static void startApplication() {
+    public static void startApplication() {
         UserInterface ui = new UserInterface();
         Scanner scanner = new Scanner(System.in);
+        label:
         while (true) {
             ui.showLoginActions();
             String input = scanner.nextLine();
-            if (input.equals("1")) {
-                ui.loginUser();
-            } else if (input.equals("2")) {
-                ui.createNewUser();
-            } else if (input.equals("3")) {
-                break;
-            } else {
-                System.out.println("Invalid input.");
+            switch (input) {
+                case "1":
+                    ui.loginUser();
+                    break;
+                case "2":
+                    ui.createNewUser();
+                    break;
+                case "3":
+                    break label;
+                default:
+                    System.out.println("Invalid input.");
+                    break;
             }
         }
+    }
+
+    public static void main(String[] args) {
+        startApplication();
     }
 }

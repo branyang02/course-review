@@ -62,6 +62,7 @@ public class StudentManager {
         }
     }
 
+
     public boolean login(Student student) {
         //check if the student's username and password are in the database
         db.connect();
@@ -80,7 +81,7 @@ public class StudentManager {
         }
     }
 
-    public boolean register(Student student) { //still need to work with integrating into other methods
+    public boolean checkStudent(Student student) {
         //check if the student's username is in the database
         db.connect();
         try {
@@ -89,15 +90,11 @@ public class StudentManager {
             selectStatement.setString(1, student.getName());
             ResultSet result = selectStatement.executeQuery();
             // Student with the same name exists in students table
-            if (result.next()) {
-                return false;
-            }
+            return result.next();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             db.disconnect();
         }
-        //add
-        return true;
     }
 }

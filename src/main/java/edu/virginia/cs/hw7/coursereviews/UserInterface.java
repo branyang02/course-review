@@ -64,25 +64,20 @@ public class UserInterface {
         }
     }
     private void submitReview() {
-        System.out.println("Enter the course name and number:");
-        String classInfo = scanner.nextLine().trim();
-        Course course = courseReviewsService.validateCourseName(classInfo);
-        if (course == null) {
-            System.out.println("Invalid course name.");
-            return;
+        try {
+            System.out.println("Enter the course name and number:");
+            String classInfo = scanner.nextLine().trim();
+            Course course = courseReviewsService.validateCourseName(classInfo);
+            System.out.println("Enter your review:");
+            String comment = scanner.nextLine();
+            System.out.println("Enter your rating (1-5):");
+            String rating = scanner.nextLine();
+            Review review = courseReviewsService.validateReview(course, comment, rating);
+            courseReviewsService.submitReview(review);
+            System.out.println("Review submitted!");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        System.out.println("Enter your review:");
-        String review = scanner.nextLine();
-        System.out.println("Enter your rating (1-5):");
-        int rating = scanner.nextInt();
-        if (rating < 1 || rating > 5) {
-            System.out.println("Invalid rating.");
-            return;
-        }
-        courseReviewsService.submitReview(new Review(courseReviewsService.getLoggedInStudent(),
-                course, review, rating));
-        System.out.println("Review submitted!");
-        showMainMenu();
     }
 
     private void seeReviews() {

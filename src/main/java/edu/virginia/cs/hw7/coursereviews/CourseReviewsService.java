@@ -42,10 +42,22 @@ public class CourseReviewsService {
         return true;
     }
 
+    public Review validateReview(Course course, String comment, String rating) {
+        int intRating;
+        try {
+            intRating = Integer.parseInt(rating);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid rating. Please enter an integer.");
+        }
+        if (intRating < 1 || intRating > 5) {
+            throw new IllegalArgumentException("Invalid rating. Please enter a number between 1 and 5.");
+        }
+        return new Review(getLoggedInStudent(), course, comment, intRating);
+    }
+
     public void submitReview(Review review) {
         if (reviewManager.checkReview(review)) {
-            System.out.println("You have already submitted a review for this course.");
-            return;
+            throw new IllegalArgumentException("You have already submitted a review for this course.");
         }
         reviewManager.addReview(review);
     }
@@ -100,8 +112,7 @@ public class CourseReviewsService {
             }
             return reviews;
         } catch (SQLException e) {
-            System.out.println("Error getting reviews");
-            return null;
+            throw new RuntimeException("Error getting reviews");
         }
     }
 
@@ -122,8 +133,7 @@ public class CourseReviewsService {
             }
             return total / count;
         } catch (SQLException e) {
-            System.out.println("Error getting reviews");
-            return 0;
+            throw new RuntimeException("Error getting average rating");
         }
     }
 
@@ -138,15 +148,15 @@ public class CourseReviewsService {
     public Course validateCourseName(String courseName) {
         String[] courseInfo = getCourseInfo(courseName);
         if (courseInfo == null) {
-            return null;
+            throw new IllegalArgumentException("No course entered.");
         }
         String subject = courseInfo[0];
         if (subject.length() < 2 || subject.length() > 4 || !subject.matches("[A-Z]+")) {
-            return null;
+            throw new IllegalArgumentException("Invalid course name.");
         }
         String catalogNumber = courseInfo[1];
         if (catalogNumber.length() != 4 || !catalogNumber.matches("\\d{4}")) {
-            return null;
+            throw new IllegalArgumentException("Invalid course number.");
         }
         return new Course(subject, Integer.parseInt(catalogNumber));
     }

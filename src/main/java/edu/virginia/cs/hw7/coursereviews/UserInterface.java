@@ -81,9 +81,16 @@ public class UserInterface {
     }
     private void seeReviews() { /* ... */ }
     private void printCourseReviews(String subject, String catalogNumber) { /* ... */ }
-    private void logout() { /* ... */ }
+    private void logout() {
+        System.out.println("Logging out...");
+        startApplication();
+    }
 
     public static void main(String[] args) {
+        startApplication();
+    }
+
+    private static void startApplication() {
         UserInterface ui = new UserInterface();
         Scanner scanner = new Scanner(System.in);
         while (true) {

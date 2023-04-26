@@ -97,5 +97,7 @@ public class StudentManager {
         } finally {
             db.disconnect();
         }
+        //add
+        return true;
     }
 }

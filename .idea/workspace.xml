@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="23d7827f-ef68-491d-9ecd-a5ec29612038" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reviews.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Reviews.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/CourseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/CourseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/CourseReviewsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/CourseReviewsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/ReviewsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/ReviewsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/UserInterface.java" afterDir="false" />
     </list>
@@ -77,7 +77,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="DatabaseManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="edu.virginia.cs.hw7.coursereviews.DatabaseManager" />
       <module name="CourseReview.main" />
@@ -91,10 +91,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="edu.virginia.cs.hw7.coursereviews.Main" />
+      <module name="CourseReview.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CourseReview.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/build/libs/CourseReview.jar" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.DatabaseManager" />
+      <item itemvalue="JAR Application.CourseReview.jar" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DatabaseManager" />
@@ -112,7 +126,7 @@
       <updated>1682223691677</updated>
       <workItem from="1682223693952" duration="1058000" />
       <workItem from="1682261620196" duration="4678000" />
-      <workItem from="1682521767811" duration="8690000" />
+      <workItem from="1682521767811" duration="10132000" />
     </task>
     <servers />
   </component>

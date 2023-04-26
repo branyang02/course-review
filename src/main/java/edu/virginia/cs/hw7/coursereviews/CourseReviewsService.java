@@ -1,5 +1,8 @@
 package edu.virginia.cs.hw7.coursereviews;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseReviewsService {
@@ -9,12 +12,17 @@ public class CourseReviewsService {
     private Student loggedInStudent;
     public CourseReviewsService() {
         DatabaseManager db = new DatabaseManager();
-        db.connect();
-        db.createTables();
-        db.populateDatabase();
+        setupDatabase(db);
         studentManager = new StudentManager(db);
         classManager = new CourseManager(db);
         reviewManager = new ReviewsManager(db);
+    }
+
+    private static void setupDatabase(DatabaseManager db) {
+        db.connect();
+        db.createTables();
+        db.populateDatabase();
+        db.disconnect();
     }
 
     public boolean register(Student student) {
@@ -35,10 +43,6 @@ public class CourseReviewsService {
     }
 
     public void submitReview(Review review) {
-        if (loggedInStudent == null) {
-            System.out.println("You must be logged in to submit a review.");
-            return;
-        }
         if (reviewManager.checkReview(review)) {
             System.out.println("You have already submitted a review for this course.");
             return;
@@ -71,11 +75,34 @@ public class CourseReviewsService {
     }
 
     public List<Review> getReviews(Course course) {
-        if (loggedInStudent == null) {
-            System.out.println("You must be logged in to see reviews.");
+        List<Review> reviews = new ArrayList<>();
+        try {
+            ResultSet rs = reviewManager.getReviews(course);
+            if (rs == null) {
+                return null;
+            }
+            while (rs.next()) {
+                String studentID = rs.getString("student_id");
+                Student reviewStudent = studentManager.getStudent(studentID);
+                if (reviewStudent == null) {
+                    System.out.println("Error getting student");
+                    return null;
+                }
+                String courseID = rs.getString("course_id");
+                Course reviewCourse = classManager.getCourse(courseID);
+                if (reviewCourse == null) {
+                    System.out.println("Error getting course");
+                    return null;
+                }
+                int rating = rs.getInt("rating");
+                String comment = rs.getString("comment");
+                reviews.add(new Review(reviewStudent, reviewCourse, comment, rating));
+            }
+            return reviews;
+        } catch (SQLException e) {
+            System.out.println("Error getting reviews");
             return null;
         }
-        return getReviews(course);
     }
 
     public double getAverageRating(Course course) {

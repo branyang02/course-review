@@ -98,5 +98,22 @@ public class StudentManager {
         }
     }
 
-
+    public Student getStudent(String studentID) {
+        db.connect();
+        try {
+            PreparedStatement statement = db.connection.prepareStatement(
+                    "SELECT * FROM students WHERE id = ?");
+            statement.setString(1, studentID);
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                return new Student(result.getString("name"), result.getString("password"));
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
+    }
 }

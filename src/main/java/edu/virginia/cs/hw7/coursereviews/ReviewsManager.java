@@ -1,6 +1,7 @@
 package edu.virginia.cs.hw7.coursereviews;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewsManager {
@@ -103,20 +104,19 @@ public class ReviewsManager {
         }
     }
 
-    public List<Review> getReviews(Course course) {
-//        db.connect();
-//        try {
-//            PreparedStatement statement = db.connection.prepareStatement(
-//                    "SELECT * FROM reviews WHERE course_id = ?");
-//            statement.setInt(1, getCourseID(course));
-//            ResultSet result = statement.executeQuery();
-//            return Review.fromResultSet(result);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        } finally {
-//            db.disconnect();
-//        }
-        return null;
+    public ResultSet getReviews(Course course) {
+        db.connect();
+        List<Review> reviews = new ArrayList<>();
+        try {
+            PreparedStatement statement = db.connection.prepareStatement(
+                    "SELECT * FROM reviews WHERE course_id = ?");
+            statement.setInt(1, getCourseID(course));
+            return statement.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
     }
 
     public boolean checkReview(Review review) {

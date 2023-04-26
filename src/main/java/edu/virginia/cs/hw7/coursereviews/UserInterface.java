@@ -102,8 +102,7 @@ public class UserInterface {
         for (Review review : reviews) {
             System.out.println(review.toString());
         }
-        System.out.println("Average rating: " + courseReviewsService.getAverageRating(course));
-        showMainMenu();
+        System.out.println("Course Average " + courseReviewsService.getAverageRating(course) + "/5");
     }
     private void logout() {
         System.out.println("Logging out...");
@@ -119,14 +118,11 @@ public class UserInterface {
                 case "1" -> loginUser();
                 case "2" -> createNewUser();
                 case "3" -> {
-                    return;
+                    System.out.println("Exiting...");
+                    System.exit(0);
                 }
                 default -> System.out.println("Invalid input.");
             }
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 }

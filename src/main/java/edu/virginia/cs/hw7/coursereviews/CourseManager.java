@@ -48,4 +48,23 @@ public class CourseManager {
             db.disconnect();
         }
     }
+
+    public Course getCourse(String courseID) {
+        db.connect();
+        try {
+            PreparedStatement statement = db.connection.prepareStatement(
+                    "SELECT * FROM courses WHERE id = ?");
+            statement.setString(1, courseID);
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                return new Course(result.getString("department"), result.getInt("catalog_number"));
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
+    }
 }

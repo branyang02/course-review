@@ -12,12 +12,13 @@ public class ReviewsManager {
     }
 
     public void addReview(Review review) {
-        int studentID = getStudentID(review.getStudent());
-        int courseID = getCourseID(review.getCourse());
+
         db.connect();
         try {
             PreparedStatement statement = db.connection.prepareStatement(
                     "INSERT INTO reviews (student_id, course_id, rating, comment) VALUES (?, ?, ?, ?)");
+            int studentID = getStudentID(review.getStudent());
+            int courseID = getCourseID(review.getCourse());
             statement.setInt(1, studentID);
             statement.setInt(2, courseID);
             statement.setInt(3, review.getRating());
@@ -66,7 +67,6 @@ public class ReviewsManager {
     }
 
     private int getStudentID(Student student) {
-        db.connect();
         try {
             PreparedStatement statement = db.connection.prepareStatement(
                     "SELECT ID FROM students WHERE NAME = ?");
@@ -79,13 +79,10 @@ public class ReviewsManager {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            db.disconnect();
         }
     }
 
     private int getCourseID(Course course) {
-        db.connect();
         try {
             PreparedStatement statement = db.connection.prepareStatement(
                     "SELECT ID FROM courses WHERE DEPARTMENT = ? AND CATALOG_NUMBER = ?");
@@ -99,24 +96,35 @@ public class ReviewsManager {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            db.disconnect();
         }
     }
 
-    public ResultSet getReviews(Course course) {
+    public List<Review> getReviews(Course course) {
         db.connect();
         List<Review> reviews = new ArrayList<>();
         try {
             PreparedStatement statement = db.connection.prepareStatement(
-                    "SELECT * FROM reviews WHERE course_id = ?");
+                    "SELECT r.*, s.name as student_name, s.password as student_password " +
+                            "FROM reviews r " +
+                            "JOIN students s ON r.student_id = s.id " +
+                            "WHERE r.course_id = ?");
             statement.setInt(1, getCourseID(course));
-            return statement.executeQuery();
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                String studentName = result.getString("student_name");
+                String studentPassword = result.getString("student_password");
+                Student student = new Student(studentName, studentPassword);
+
+                int rating = result.getInt("rating");
+                String comment = result.getString("comment");
+                reviews.add(new Review(student, course, comment, rating));
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             db.disconnect();
         }
+        return reviews;
     }
 
     public boolean checkReview(Review review) {

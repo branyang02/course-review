@@ -71,52 +71,28 @@ public class CourseReviewsService {
     }
 
     public List<Review> getReviews(Course course) {
-        List<Review> reviews = new ArrayList<>();
-        try {
-            ResultSet rs = reviewManager.getReviews(course);
-            if (rs == null) {
-                return null;
-            }
-            while (rs.next()) {
-                String studentID = rs.getString("student_id");
-                Student reviewStudent = studentManager.getStudent(studentID);
-                if (reviewStudent == null) {
-                    throw new RuntimeException("Error getting student");
-                }
-                String courseID = rs.getString("course_id");
-                Course reviewCourse = classManager.getCourse(courseID);
-                if (reviewCourse == null) {
-                    throw new RuntimeException("Error getting course");
-                }
-                int rating = rs.getInt("rating");
-                String comment = rs.getString("comment");
-                reviews.add(new Review(reviewStudent, reviewCourse, comment, rating));
-            }
-            return reviews;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error getting reviews");
+        List<Review> reviews = reviewManager.getReviews(course);
+        if (reviews == null || reviews.isEmpty()) {
+            return null;
         }
+        return reviews;
     }
 
     public double getAverageRating(Course course) {
-        try {
-            ResultSet rs = reviewManager.getReviews(course);
-            if (rs == null) {
-                return 0;
-            }
-            double total = 0;
-            double count = 0;
-            while (rs.next()) {
-                total += rs.getInt("rating");
-                count++;
-            }
-            if (count == 0) {
-                return 0;
-            }
-            return total / count;
-        } catch (SQLException e) {
-            throw new RuntimeException("Error getting average rating");
+        List<Review> reviews = reviewManager.getReviews(course);
+        if (reviews == null || reviews.isEmpty()) {
+            return 0;
         }
+        double total = 0;
+        double count = 0;
+        for (Review review : reviews) {
+            total += review.getRating();
+            count++;
+        }
+        if (count == 0) {
+            return 0;
+        }
+        return total / count;
     }
 
     public Course validateCourseName(String courseName) {

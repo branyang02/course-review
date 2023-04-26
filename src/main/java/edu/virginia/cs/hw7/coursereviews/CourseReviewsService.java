@@ -1,20 +1,17 @@
 package edu.virginia.cs.hw7.coursereviews;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CourseReviewsService {
     private final StudentManager studentManager;
-    private final CourseManager classManager;
+    private final CourseManager courseManager;
     private final ReviewsManager reviewManager;
     private Student loggedInStudent;
     public CourseReviewsService() {
         DatabaseManager db = new DatabaseManager();
         setupDatabase(db);
         studentManager = new StudentManager(db);
-        classManager = new CourseManager(db);
+        courseManager = new CourseManager(db);
         reviewManager = new ReviewsManager(db);
     }
 
@@ -61,7 +58,7 @@ public class CourseReviewsService {
     }
 
     public void submitReview(Review review) {
-        if (!classManager.checkCourse(review.getCourse())) {
+        if (!courseManager.checkCourse(review.getCourse())) {
             addCourse(review.getCourse());
         }
         if (reviewManager.checkReview(review)) {
@@ -109,9 +106,9 @@ public class CourseReviewsService {
     }
 
     public void addCourse(Course course) {
-        if (classManager.checkCourse(course)) {
+        if (courseManager.checkCourse(course)) {
             throw new IllegalArgumentException("Course already exists.");
         }
-        classManager.addCourse(course);
+        courseManager.addCourse(course);
     }
 }

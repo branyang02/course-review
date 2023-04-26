@@ -66,6 +66,11 @@ public class UserInterface {
     private void submitReview() {
         System.out.println("Enter the course name and number:");
         String classInfo = scanner.nextLine().trim();
+        Course course = courseReviewsService.validateCourseName(classInfo);
+        if (course == null) {
+            System.out.println("Invalid course name.");
+            return;
+        }
         System.out.println("Enter your review:");
         String review = scanner.nextLine();
         System.out.println("Enter your rating (1-5):");
@@ -74,13 +79,31 @@ public class UserInterface {
             System.out.println("Invalid rating.");
             return;
         }
-        courseReviewsService.submitReview(classInfo, review, rating);
+        courseReviewsService.submitReview(new Review(courseReviewsService.getLoggedInStudent(),
+                course, review, rating));
+        System.out.println("Review submitted!");
+        showMainMenu();
     }
 
     private void seeReviews() {
         System.out.println("Enter the course name and number:");
         String className = scanner.nextLine().trim();
-        List<Review> reviews = courseReviewsService.getReviews(className);
+        Course course = courseReviewsService.validateCourseName(className);
+        if (course == null) {
+            System.out.println("Invalid course name.");
+            return;
+        }
+        List<Review> reviews = courseReviewsService.getReviews(course);
+        if (reviews.isEmpty()) {
+            System.out.println("No reviews found.");
+            return;
+        }
+        System.out.println("Reviews for " + course.toString() + ":");
+        for (Review review : reviews) {
+            System.out.println(review.toString());
+        }
+        System.out.println("Average rating: " + courseReviewsService.getAverageRating(course));
+        showMainMenu();
     }
     private void logout() {
         System.out.println("Logging out...");
@@ -104,7 +127,6 @@ public class UserInterface {
     }
 
     public static void main(String[] args) {
-        UserInterface ui = new UserInterface();
-        ui.startApplication();
+
     }
 }

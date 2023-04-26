@@ -46,7 +46,7 @@ public class Review {
     }
 
     public String toString() {
-        return "Review: " + student.getName() + " " + course.getDepartment() + " " + course.getCatalogNumber() + " " + comment + " " + rating;
+        return "Review: " + comment + "\nRating: " + rating;
     }
 
 }

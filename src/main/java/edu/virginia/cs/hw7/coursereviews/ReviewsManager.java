@@ -1,6 +1,7 @@
 package edu.virginia.cs.hw7.coursereviews;
 
 import java.sql.*;
+import java.util.List;
 
 public class ReviewsManager {
     private final DatabaseManager db;
@@ -95,6 +96,38 @@ public class ReviewsManager {
             } else {
                 throw new RuntimeException("Course not found: " + course);
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
+    }
+
+    public List<Review> getReviews(Course course) {
+//        db.connect();
+//        try {
+//            PreparedStatement statement = db.connection.prepareStatement(
+//                    "SELECT * FROM reviews WHERE course_id = ?");
+//            statement.setInt(1, getCourseID(course));
+//            ResultSet result = statement.executeQuery();
+//            return Review.fromResultSet(result);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        } finally {
+//            db.disconnect();
+//        }
+        return null;
+    }
+
+    public boolean checkReview(Review review) {
+        db.connect();
+        try {
+            PreparedStatement statement = db.connection.prepareStatement(
+                    "SELECT * FROM reviews WHERE student_id = ? AND course_id = ?");
+            statement.setInt(1, getStudentID(review.getStudent()));
+            statement.setInt(2, getCourseID(review.getCourse()));
+            ResultSet result = statement.executeQuery();
+            return result.next();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

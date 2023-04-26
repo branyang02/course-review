@@ -74,7 +74,7 @@ public class DatabaseManager {
         }
     }
 
-    private void populateDatabase() {
+    public void populateDatabase() {
         DatabaseManager db = new DatabaseManager();
         db.connect();
 
@@ -120,13 +120,5 @@ public class DatabaseManager {
 
         db.disconnect();
 
-    }
-
-    public static void main(String[] args) {
-        DatabaseManager db = new DatabaseManager();
-        db.connect();
-        db.createTables();
-        db.populateDatabase();
-        db.disconnect();
     }
 }

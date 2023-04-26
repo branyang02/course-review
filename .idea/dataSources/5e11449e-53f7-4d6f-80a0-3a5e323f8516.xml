@@ -1423,5 +1423,122 @@
     <argument id="503" parent="172">
       <Position>1</Position>
     </argument>
+    <table id="504" parent="173" name="courses"/>
+    <table id="505" parent="173" name="reviews"/>
+    <table id="506" parent="173" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="507" parent="173" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="508" parent="173" name="students"/>
+    <column id="509" parent="504" name="ID">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>INTEGER|0s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="510" parent="504" name="DEPARTMENT">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="511" parent="504" name="CATALOG_NUMBER">
+      <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <key id="512" parent="504">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <check id="513" parent="505">
+      <Predicate>rating &gt;= 1 AND rating &lt;= 5</Predicate>
+    </check>
+    <column id="514" parent="505" name="ID">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>INTEGER|0s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="515" parent="505" name="STUDENT_ID">
+      <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="516" parent="505" name="COURSE_ID">
+      <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="517" parent="505" name="RATING">
+      <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="518" parent="505" name="COMMENT">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="519" parent="505">
+      <ColNames>STUDENT_ID</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>students</RefTableName>
+    </foreign-key>
+    <foreign-key id="520" parent="505">
+      <ColNames>COURSE_ID</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <RefColNames>ID</RefColNames>
+      <RefTableName>courses</RefTableName>
+    </foreign-key>
+    <key id="521" parent="505">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="522" parent="506" name="type">
+      <DasType>TEXT|0s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="523" parent="506" name="name">
+      <DasType>TEXT|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <column id="524" parent="506" name="tbl_name">
+      <DasType>TEXT|0s</DasType>
+      <Position>3</Position>
+    </column>
+    <column id="525" parent="506" name="rootpage">
+      <DasType>INT|0s</DasType>
+      <Position>4</Position>
+    </column>
+    <column id="526" parent="506" name="sql">
+      <DasType>TEXT|0s</DasType>
+      <Position>5</Position>
+    </column>
+    <column id="527" parent="507" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="528" parent="507" name="seq">
+      <Position>2</Position>
+    </column>
+    <column id="529" parent="508" name="ID">
+      <AutoIncrement>1</AutoIncrement>
+      <DasType>INTEGER|0s</DasType>
+      <Position>1</Position>
+    </column>
+    <column id="530" parent="508" name="NAME">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="531" parent="508" name="PASSWORD">
+      <DasType>TEXT|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <key id="532" parent="508">
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

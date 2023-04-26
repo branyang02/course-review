@@ -40,6 +40,13 @@ public class CourseReviewsService {
         this.loggedInStudent = student;
     }
 
+    public void logout() {
+        loggedInStudent = null;
+    }
+
+    public Student getLoggedInStudent() {
+        return loggedInStudent;
+    }
     public Review validateReview(Course course, String comment, String rating) {
         int intRating;
         try {
@@ -54,13 +61,14 @@ public class CourseReviewsService {
     }
 
     public void submitReview(Review review) {
+        if (!classManager.checkCourse(review.getCourse())) {
+            addCourse(review.getCourse());
+        }
         if (reviewManager.checkReview(review)) {
             throw new IllegalArgumentException("You have already submitted a review for this course.");
         }
         reviewManager.addReview(review);
     }
-
-
 
     public List<Review> getReviews(Course course) {
         List<Review> reviews = new ArrayList<>();
@@ -73,14 +81,12 @@ public class CourseReviewsService {
                 String studentID = rs.getString("student_id");
                 Student reviewStudent = studentManager.getStudent(studentID);
                 if (reviewStudent == null) {
-                    System.out.println("Error getting student");
-                    return null;
+                    throw new RuntimeException("Error getting student");
                 }
                 String courseID = rs.getString("course_id");
                 Course reviewCourse = classManager.getCourse(courseID);
                 if (reviewCourse == null) {
-                    System.out.println("Error getting course");
-                    return null;
+                    throw new RuntimeException("Error getting course");
                 }
                 int rating = rs.getInt("rating");
                 String comment = rs.getString("comment");
@@ -113,14 +119,6 @@ public class CourseReviewsService {
         }
     }
 
-    public void logout() {
-        loggedInStudent = null;
-    }
-
-    public Student getLoggedInStudent() {
-        return loggedInStudent;
-    }
-
     public Course validateCourseName(String courseName) {
         String[] courseInfo = courseName.split(" ");
         String subject = courseInfo[0];
@@ -132,5 +130,12 @@ public class CourseReviewsService {
             throw new IllegalArgumentException("Invalid course number.");
         }
         return new Course(subject, Integer.parseInt(catalogNumber));
+    }
+
+    public void addCourse(Course course) {
+        if (classManager.checkCourse(course)) {
+            throw new IllegalArgumentException("Course already exists.");
+        }
+        classManager.addCourse(course);
     }
 }

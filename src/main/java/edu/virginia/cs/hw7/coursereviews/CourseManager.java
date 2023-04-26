@@ -67,4 +67,20 @@ public class CourseManager {
             db.disconnect();
         }
     }
+
+    public boolean checkCourse(Course course) {
+        db.connect();
+        try {
+            PreparedStatement statement = db.connection.prepareStatement(
+                    "SELECT * FROM courses WHERE department = ? AND catalog_number = ?");
+            statement.setString(1, course.getDepartment());
+            statement.setInt(2, course.getCatalogNumber());
+            ResultSet result = statement.executeQuery();
+            return result.next();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
+    }
 }

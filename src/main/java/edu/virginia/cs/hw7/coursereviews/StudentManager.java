@@ -98,6 +98,22 @@ public class StudentManager {
         }
     }
 
+    public boolean verifyStudent(Student student) {
+        db.connect();
+        try {
+            PreparedStatement selectStatement = db.connection.prepareStatement(
+                    "SELECT * FROM students WHERE NAME = ? AND PASSWORD = ?");
+            selectStatement.setString(1, student.getName());
+            selectStatement.setString(2, student.getPassword());
+            ResultSet result = selectStatement.executeQuery();
+            // Student with the same name and password exists in students table
+            return result.next();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
+    }
     public Student getStudent(String studentID) {
         db.connect();
         try {

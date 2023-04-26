@@ -35,7 +35,7 @@ public class CourseReviewsService {
     }
 
     public boolean login(Student student) {
-        if (!studentManager.checkStudent(student)) {
+        if (!studentManager.verifyStudent(student)) {
             return false;
         }
         this.loggedInStudent = student;

@@ -48,7 +48,6 @@ public class StudentManager {
         }
     }
 
-
     public void clearStudents() {
         db.connect();
         try {
@@ -56,6 +55,24 @@ public class StudentManager {
             statement.executeUpdate("DELETE FROM students");
             db.connection.commit();
             System.out.println("All students have been deleted from the database.");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
+    }
+
+    public boolean login(Student student) {
+        //check if the student's username and password are in the database
+        db.connect();
+        try {
+            PreparedStatement selectStatement = db.connection.prepareStatement(
+                    "SELECT * FROM students WHERE NAME = ? AND PASSWORD = ?");
+            selectStatement.setString(1, student.getName());
+            selectStatement.setString(2, student.getPassword());
+            ResultSet result = selectStatement.executeQuery();
+            // Student with the same name and password exists in students table
+            return result.next();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

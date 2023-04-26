@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23d7827f-ef68-491d-9ecd-a5ec29612038" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/37140030-d317-40bb-836f-cbc3cc2fc061.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5e11449e-53f7-4d6f-80a0-3a5e323f8516.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5e11449e-53f7-4d6f-80a0-3a5e323f8516.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/623b4c50-c6e9-4782-b9f9-95b2eea0dc57.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9ee26fd7-88ac-4730-95cd-ae3797aff4fe.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/UserInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +108,7 @@
       <updated>1682223691677</updated>
       <workItem from="1682223693952" duration="1058000" />
       <workItem from="1682261620196" duration="4678000" />
-      <workItem from="1682521767811" duration="198000" />
+      <workItem from="1682521767811" duration="818000" />
     </task>
     <servers />
   </component>

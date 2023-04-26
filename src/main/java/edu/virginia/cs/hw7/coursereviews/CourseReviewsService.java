@@ -106,7 +106,25 @@ public class CourseReviewsService {
     }
 
     public double getAverageRating(Course course) {
-        return 0;
+        try {
+            ResultSet rs = reviewManager.getReviews(course);
+            if (rs == null) {
+                return 0;
+            }
+            double total = 0;
+            double count = 0;
+            while (rs.next()) {
+                total += rs.getInt("rating");
+                count++;
+            }
+            if (count == 0) {
+                return 0;
+            }
+            return total / count;
+        } catch (SQLException e) {
+            System.out.println("Error getting reviews");
+            return 0;
+        }
     }
 
     public void logout() {
@@ -132,5 +150,4 @@ public class CourseReviewsService {
         }
         return new Course(subject, Integer.parseInt(catalogNumber));
     }
-
 }

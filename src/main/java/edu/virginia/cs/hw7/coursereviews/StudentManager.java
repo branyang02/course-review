@@ -79,4 +79,23 @@ public class StudentManager {
             db.disconnect();
         }
     }
+
+    public boolean register(Student student) { //still need to work with integrating into other methods
+        //check if the student's username is in the database
+        db.connect();
+        try {
+            PreparedStatement selectStatement = db.connection.prepareStatement(
+                    "SELECT * FROM students WHERE NAME = ?");
+            selectStatement.setString(1, student.getName());
+            ResultSet result = selectStatement.executeQuery();
+            // Student with the same name exists in students table
+            if (result.next()) {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            db.disconnect();
+        }
+    }
 }

@@ -27,11 +27,11 @@ public class UserInterface {
             System.out.println("Passwords do not match.");
             return;
         }
-        if (courseReviewsService.register(new Student(username, password))) {
+        try {
+            courseReviewsService.register(new Student(username, password));
             System.out.println("Registration successful!");
-            showMainMenu();
-        } else {
-            System.out.println("Registration failed. There is already a user with that name.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     private void loginUser() {
@@ -39,11 +39,12 @@ public class UserInterface {
         String username = scanner.nextLine();
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
-        if (courseReviewsService.login(new Student(username, password))) {
+        try {
+            courseReviewsService.login(new Student(username, password));
             System.out.println("Login successful!");
             showMainMenu();
-        } else {
-            System.out.println("Login failed. Incorrect username or password.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     private void showMainMenu() {
@@ -81,6 +82,7 @@ public class UserInterface {
     }
 
     private void seeReviews() {
+        try {
         System.out.println("Enter the course name and number:");
         String className = scanner.nextLine().trim();
         Course course = courseReviewsService.validateCourseName(className);
@@ -98,6 +100,9 @@ public class UserInterface {
             System.out.println(review.toString());
         }
         System.out.println("Course Average " + courseReviewsService.getAverageRating(course) + "/5");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     private void logout() {
         System.out.println("Logging out...");

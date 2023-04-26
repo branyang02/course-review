@@ -25,21 +25,19 @@ public class CourseReviewsService {
         db.disconnect();
     }
 
-    public boolean register(Student student) {
+    public void register(Student student) {
         if (studentManager.checkStudent(student)) {
-            return false;
+            throw new IllegalArgumentException("Username already exists.");
         }
         studentManager.addStudent(student);
         this.loggedInStudent = student;
-        return true;
     }
 
-    public boolean login(Student student) {
+    public void login(Student student) {
         if (!studentManager.verifyStudent(student)) {
-            return false;
+            throw new IllegalArgumentException("Invalid username or password.");
         }
         this.loggedInStudent = student;
-        return true;
     }
 
     public Review validateReview(Course course, String comment, String rating) {
@@ -62,29 +60,7 @@ public class CourseReviewsService {
         reviewManager.addReview(review);
     }
 
-    private String[] getCourseInfo(String input) {
-        try {
-            String[] courseInfo = input.split(" ");
-            String subject = courseInfo[0];
-            if (subject.length() < 2 || subject.length() > 4) {
-                System.out.println("Invalid course name");
-                return null;
-            }
-            String catalogNumber = courseInfo[1];
-            if (catalogNumber.length() != 4) {
-                System.out.println("Invalid course number");
-                return null;
-            }
-            if (Integer.parseInt(catalogNumber) < 1000 || Integer.parseInt(catalogNumber) > 9999) {
-                System.out.println("Invalid course number");
-                return null;
-            }
-            return new String[]{subject, catalogNumber};
-        } catch (Exception e) {
-            System.out.println("Invalid course name and number.");
-            return null;
-        }
-    }
+
 
     public List<Review> getReviews(Course course) {
         List<Review> reviews = new ArrayList<>();
@@ -146,10 +122,7 @@ public class CourseReviewsService {
     }
 
     public Course validateCourseName(String courseName) {
-        String[] courseInfo = getCourseInfo(courseName);
-        if (courseInfo == null) {
-            throw new IllegalArgumentException("No course entered.");
-        }
+        String[] courseInfo = courseName.split(" ");
         String subject = courseInfo[0];
         if (subject.length() < 2 || subject.length() > 4 || !subject.matches("[A-Z]+")) {
             throw new IllegalArgumentException("Invalid course name.");

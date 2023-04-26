@@ -1,10 +1,14 @@
 package edu.virginia.cs.hw7.coursereviews;
 
+import java.util.List;
 import java.util.Scanner;
 public class UserInterface {
-    public final CourseReviews courseReviews;
+    public final CourseReviewsService courseReviewsService;
+    private final Scanner scanner;
+
     public UserInterface() {
-        courseReviews = new CourseReviews();
+        courseReviewsService = new CourseReviewsService();
+        scanner = new Scanner(System.in);
     }
     private void showLoginActions() {
         System.out.println("1. Login");
@@ -13,7 +17,6 @@ public class UserInterface {
     }
 
     private void createNewUser() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your username:");
         String username = scanner.nextLine();
         System.out.println("Enter your password:");
@@ -24,7 +27,7 @@ public class UserInterface {
             System.out.println("Passwords do not match.");
             return;
         }
-        if (courseReviews.register(new Student(username, password))) {
+        if (courseReviewsService.register(new Student(username, password))) {
             System.out.println("Registration successful!");
             showMainMenu();
         } else {
@@ -32,12 +35,11 @@ public class UserInterface {
         }
     }
     private void loginUser() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your username:");
         String username = scanner.nextLine();
         System.out.println("Enter your password:");
         String password = scanner.nextLine();
-        if (courseReviews.login(new Student(username, password))) {
+        if (courseReviewsService.login(new Student(username, password))) {
             System.out.println("Login successful!");
             showMainMenu();
         } else {
@@ -45,90 +47,64 @@ public class UserInterface {
         }
     }
     private void showMainMenu() {
-        Scanner scanner = new Scanner(System.in);
-        label:
         while (true) {
             System.out.println("1. Submit a review");
             System.out.println("2. See reviews for a course");
             System.out.println("3. Logout");
             String input = scanner.nextLine();
             switch (input) {
-                case "1":
-                    submitReview();
-                    break;
-                case "2":
-                    seeReviews();
-                    break;
-                case "3":
+                case "1" -> submitReview();
+                case "2" -> seeReviews();
+                case "3" -> {
                     logout();
-                    break label;
-                default:
-                    System.out.println("Invalid input.");
-                    break;
+                    return;
+                }
+                default -> System.out.println("Invalid input.");
             }
         }
     }
     private void submitReview() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the course name and number:");
-        String className = scanner.nextLine().trim();
-        String[] courseInfo = getCourseInfo(className);
+        String classInfo = scanner.nextLine().trim();
         System.out.println("Enter your review:");
         String review = scanner.nextLine();
         System.out.println("Enter your rating (1-5):");
         int rating = scanner.nextInt();
-//        if (reviewManager.submitReview(new Review(new Student(), new Course(courseInfo[0], courseInfo[1]), review, rating))) {
-//            System.out.println("Review submitted successfully!");
-//        } else {
-//            System.out.println("Review submission failed. The course does not exist.");
-//        }
-    }
-    private String[] getCourseInfo(String input) {
-        try {
-            String[] courseInfo = input.split(" ");
-            String subject = courseInfo[0];
-            if (subject.length() < 2 || subject.length() > 4) {
-                System.out.println("Invalid course name");
-                return null;
-            }
-            String catalogNumber = courseInfo[1];
-            return new String[]{subject, catalogNumber};
-        } catch (Exception e) {
-            System.out.println("Invalid course name and number.");
-            return null;
+        if (rating < 1 || rating > 5) {
+            System.out.println("Invalid rating.");
+            return;
         }
+        courseReviewsService.submitReview(classInfo, review, rating);
     }
-    private void seeReviews() { /* ... */ }
-    private void printCourseReviews(String subject, String catalogNumber) { /* ... */ }
+
+    private void seeReviews() {
+        System.out.println("Enter the course name and number:");
+        String className = scanner.nextLine().trim();
+        List<Review> reviews = courseReviewsService.getReviews(className);
+    }
     private void logout() {
         System.out.println("Logging out...");
+        courseReviewsService.logout();
         startApplication();
     }
 
-    public static void startApplication() {
-        UserInterface ui = new UserInterface();
-        Scanner scanner = new Scanner(System.in);
-        label:
+    public void startApplication() {
         while (true) {
-            ui.showLoginActions();
+            showLoginActions();
             String input = scanner.nextLine();
             switch (input) {
-                case "1":
-                    ui.loginUser();
-                    break;
-                case "2":
-                    ui.createNewUser();
-                    break;
-                case "3":
-                    break label;
-                default:
-                    System.out.println("Invalid input.");
-                    break;
+                case "1" -> loginUser();
+                case "2" -> createNewUser();
+                case "3" -> {
+                    return;
+                }
+                default -> System.out.println("Invalid input.");
             }
         }
     }
 
     public static void main(String[] args) {
-        startApplication();
+        UserInterface ui = new UserInterface();
+        ui.startApplication();
     }
 }

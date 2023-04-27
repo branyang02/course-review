@@ -94,6 +94,9 @@ public class CourseReviewsService {
 
     public Course validateCourseName(String courseName) {
         String[] courseInfo = courseName.split(" ");
+        if (courseInfo.length != 2) {
+            throw new IllegalArgumentException("Invalid course name.");
+        }
         String subject = courseInfo[0];
         if (subject.length() < 2 || subject.length() > 4 || !subject.matches("[A-Z]+")) {
             throw new IllegalArgumentException("Invalid course name.");

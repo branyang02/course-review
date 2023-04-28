@@ -26,6 +26,9 @@ public class CourseReviewsService {
         if (student.getName().trim().isEmpty()) {
             throw new IllegalArgumentException("Username cannot be empty.");
         }
+        if (student.getPassword().trim().isEmpty()) {
+            throw new IllegalArgumentException("Password cannot be empty.");
+        }
         if (studentManager.checkStudent(student)) {
             throw new IllegalArgumentException("Username already exists.");
         }

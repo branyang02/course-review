@@ -1,0 +1,30 @@
+.vbox {
+    -fx-background-color: #F5F5F5;
+    -fx-padding: 30px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 2px;
+}
+
+#welcomeText {
+    -fx-font-size: 24px;
+}
+
+#Hbox {
+    -fx-spacing: 10.0;
+    -fx-alignment: CENTER;
+}
+
+.text-field, .password-field {
+    -fx-font-size: 18px;
+}
+
+#loginButton {
+    -fx-font-size: 18px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+#registerButton {
+    -fx-background-color: #2196F3;
+}

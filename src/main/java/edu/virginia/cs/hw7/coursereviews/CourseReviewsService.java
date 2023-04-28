@@ -9,7 +9,7 @@ public class CourseReviewsService {
     private Student loggedInStudent;
     public CourseReviewsService() {
         DatabaseManager db = new DatabaseManager();
-        setupDatabase(db);
+//        setupDatabase(db);
         studentManager = new StudentManager(db);
         courseManager = new CourseManager(db);
         reviewManager = new ReviewsManager(db);

@@ -6,13 +6,43 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
+      stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
-    <Label text="Register"/>
-
-    <TextField fx:id="usernameField" promptText="Username"/>
-    <PasswordField fx:id="passwordField" promptText="Password"/>
-    <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password"/>
-    <Button text="Register" onAction="#registerStudent"/>
+    <Label text="Register" style="-fx-font-size: 24px;"/>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Label>
+            <graphic>
+                <ImageView fitHeight="35" fitWidth="35">
+                    <Image url="@icons8-username-96.png" />
+                </ImageView>
+            </graphic>
+        </Label>
+        <TextField fx:id="usernameField" promptText="Username" style="-fx-font-size: 18px;"/>
+    </HBox>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Label>
+            <graphic>
+                <ImageView fitHeight="35" fitWidth="35">
+                    <Image url="@icons8-password-480.png" />
+                </ImageView>
+            </graphic>
+        </Label>
+        <PasswordField fx:id="passwordField" promptText="Password" style="-fx-font-size: 18px;"/>
+    </HBox>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Label>
+            <graphic>
+                <ImageView fitHeight="35" fitWidth="35">
+                    <Image url="@icons8-password-480.png" />
+                </ImageView>
+            </graphic>
+        </Label>
+        <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" style="-fx-font-size: 18px;"/>
+    </HBox>
+    <Button id="registerButton" text="Register" onAction="#registerStudent"/>
     <Label fx:id="errorMessage" textFill="RED"/>
 </VBox>

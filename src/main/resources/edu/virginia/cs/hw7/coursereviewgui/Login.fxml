@@ -6,12 +6,33 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController">
-    <Label text="Welcome to the login page!"/>
-
-    <TextField fx:id="usernameField" promptText="Username"/>
-    <PasswordField fx:id="passwordField" promptText="Password"/>
-    <Button text="Login" onAction="#loginButtonClicked"/>
-    <Button text="Register" onAction="#registerButtonClicked"/>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
+      style="-fx-background-color: #F5F5F5; -fx-padding: 30px; -fx-border-radius: 10px; -fx-border-color: #E0E0E0; -fx-border-width: 2px;">
+    <Label text="Welcome to Course Review!" style="-fx-font-size: 24px;"/>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Label>
+            <graphic>
+                <ImageView fitHeight="35" fitWidth="35">
+                    <Image url="@icons8-username-96.png" />
+                </ImageView>
+            </graphic>
+        </Label>
+        <TextField fx:id="usernameField" promptText="Username" style="-fx-font-size: 18px;"/>
+    </HBox>
+    <HBox spacing="10.0" alignment="CENTER">
+        <Label>
+            <graphic>
+                <ImageView fitHeight="35" fitWidth="35">
+                    <Image url="@icons8-password-480.png" />
+                </ImageView>
+            </graphic>
+        </Label>
+        <PasswordField fx:id="passwordField" promptText="Password" style="-fx-font-size: 18px;"/>
+    </HBox>
+    <Button text="Login" onAction="#loginButtonClicked" style="-fx-font-size: 18px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    <Button text="Register" onAction="#registerButtonClicked" style="-fx-font-size: 18px; -fx-background-color: #2196F3; -fx-text-fill: white;"/>
     <Label fx:id="errorMessage" textFill="RED"/>
 </VBox>

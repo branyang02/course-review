@@ -23,6 +23,9 @@ public class CourseReviewsService {
     }
 
     public void register(Student student) {
+        if (student.getName().trim().isEmpty()) {
+            throw new IllegalArgumentException("Username cannot be empty.");
+        }
         if (studentManager.checkStudent(student)) {
             throw new IllegalArgumentException("Username already exists.");
         }

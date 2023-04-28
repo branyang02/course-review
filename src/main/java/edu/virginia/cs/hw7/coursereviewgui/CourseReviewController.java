@@ -76,4 +76,6 @@ public class CourseReviewController {
             errorMessage.setText(e.getMessage());
         }
     }
+
+    // TODO: Add back button on register page (back to login)
 }

@@ -23,7 +23,7 @@ public class CourseReviewController {
     private PasswordField passwordField;
     @FXML
     private Label errorMessage;
-    private CourseReviewsService courseReviewsService;
+    private final CourseReviewsService courseReviewsService;
 
     public CourseReviewController() {
         courseReviewsService = new CourseReviewsService();

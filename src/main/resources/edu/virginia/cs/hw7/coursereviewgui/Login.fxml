@@ -10,7 +10,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
-      stylesheets="@CourseReview.css">
+      stylesheets="@CourseReview.css"
+      prefWidth="800" prefHeight="600">
     <Label id="welcomeText" text="Welcome to Course Review!"/>
     <HBox id="Hbox">
         <Label>

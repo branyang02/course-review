@@ -56,7 +56,7 @@ public class CourseReviewController {
     }
 
 
-    public void registerStudent() {
+    public void registerStudent(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
         String password2 = confirmPasswordField.getText();
@@ -75,6 +75,15 @@ public class CourseReviewController {
             System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
         }
+    }
+
+    public void submitAReview(ActionEvent actionEvent) {
+    }
+
+    public void seeAReview(ActionEvent actionEvent) {
+    }
+
+    public void logOut(ActionEvent actionEvent) {
     }
 
     // TODO: Add back button on register page (back to login)

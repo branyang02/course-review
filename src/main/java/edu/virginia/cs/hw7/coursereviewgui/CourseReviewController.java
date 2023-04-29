@@ -37,11 +37,7 @@ public class CourseReviewController {
             courseReviewsService.login(new Student(username, password));
             System.out.println("Login successful!");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
+            loadMainMenu("MainMenu.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -52,11 +48,7 @@ public class CourseReviewController {
 
     public void registerButtonClicked(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Register.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
+            loadMainMenu("Register.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,17 +69,22 @@ public class CourseReviewController {
         try {
             courseReviewsService.register(new Student(username, password));
             System.out.println("Registration successful!");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
+
+            loadMainMenu("MainMenu.fxml", event);
         } catch (IOException e) {
            e.printStackTrace();
         }catch (Exception e) {
             System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
         }
+    }
+
+    private void loadMainMenu(String name, ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(name));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
     }
 
     public void submitAReview(ActionEvent actionEvent) {

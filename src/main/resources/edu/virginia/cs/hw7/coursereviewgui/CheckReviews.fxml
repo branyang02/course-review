@@ -17,5 +17,6 @@
     <HBox spacing="10.0" alignment="CENTER">
         <TextField fx:id="courseNameField" promptText="Course Name"/>
     </HBox>
-    <Button id="checkReviewsButton" text="Check Reviews" onAction="#checkReviews"/>
+    <Button id="seeReviewsButton" text="See Reviews" onAction="#seeReviews"/>
+    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu"/>
 </VBox>

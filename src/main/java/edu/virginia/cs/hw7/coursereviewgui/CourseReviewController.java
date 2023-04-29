@@ -98,20 +98,33 @@ public class CourseReviewController {
         }
     }
 
-    public void seeAReview(ActionEvent actionEvent) {
+    public void checkAReview(ActionEvent actionEvent) {
         try {
-            loadNewScene("SeeAReview.fxml", actionEvent);
+            loadNewScene("CheckReviews.fxml", actionEvent);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void logOut(ActionEvent actionEvent) {
+        try {
+            loadNewScene("Login.fxml", actionEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void goBack(ActionEvent event) {
+    public void goBackToLogin(ActionEvent event) {
         try {
             loadNewScene("Login.fxml", event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void goBackToMainMenu(ActionEvent event) {
+        try {
+            loadNewScene("MainMenu.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -120,6 +133,6 @@ public class CourseReviewController {
     public void submitAReview(ActionEvent event) {
     }
 
-    public void checkReviews(ActionEvent event) {
+    public void seeReviews(ActionEvent event) {
     }
 }

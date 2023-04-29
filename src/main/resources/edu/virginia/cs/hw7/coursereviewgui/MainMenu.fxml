@@ -15,7 +15,7 @@
       prefWidth="800" prefHeight="600">
     <Label text="Main Menu" style="-fx-font-size: 24px;"/>
     <Button id="submitReviewButton" text="Submit a Review" onAction="#goSubmitAReview"/>
-    <Button id="seeReviewsButton" text="See Reviews" onAction="#seeAReview"/>
+    <Button id="checkReviewsButton" text="Check Reviews" onAction="#checkAReview"/>
     <Button id="logOutButton" text="Log Out" onAction="#logOut"/>
 
 

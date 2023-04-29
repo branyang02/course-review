@@ -24,4 +24,5 @@
         <TextField fx:id="ratingField" promptText="Rating"/>
     </HBox>
     <Button id="submitButton" text="Submit Review" onAction="#submitAReview"/>
+    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu"/>
 </VBox>

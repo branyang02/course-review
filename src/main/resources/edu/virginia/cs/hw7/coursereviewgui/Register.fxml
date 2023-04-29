@@ -44,6 +44,6 @@
         <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" style="-fx-font-size: 18px;"/>
     </HBox>
     <Button id="registerButton" text="Register" onAction="#registerStudent"/>
-    <Button id="backButton" text="Go Back To Login" onAction="#goBack"/>
+    <Button id="backButton" text="Go Back To Login" onAction="#goBackToLogin"/>
     <Label fx:id="errorMessage" textFill="RED"/>
 </VBox>

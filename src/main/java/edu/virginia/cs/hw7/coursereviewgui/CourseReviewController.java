@@ -14,10 +14,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.InterruptedIOException;
 
 public class CourseReviewController {
     public PasswordField confirmPasswordField;
+    public TextField courseNameField;
     @FXML
     private TextField usernameField;
     @FXML
@@ -38,7 +38,7 @@ public class CourseReviewController {
             courseReviewsService.login(new Student(username, password));
             System.out.println("Login successful!");
 
-            loadMainMenu("MainMenu.fxml", event);
+            loadNewScene("MainMenu.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -49,7 +49,7 @@ public class CourseReviewController {
 
     public void registerButtonClicked(ActionEvent event) {
         try {
-            loadMainMenu("Register.fxml", event);
+            loadNewScene("Register.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public class CourseReviewController {
             courseReviewsService.register(new Student(username, password));
             System.out.println("Registration successful!");
 
-            loadMainMenu("MainMenu.fxml", event);
+            loadNewScene("MainMenu.fxml", event);
         } catch (IOException e) {
            e.printStackTrace();
         }catch (Exception e) {
@@ -80,7 +80,7 @@ public class CourseReviewController {
         }
     }
 
-    private void loadMainMenu(String name, ActionEvent event) throws IOException {
+    private void loadNewScene(String name, ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(name));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -88,7 +88,12 @@ public class CourseReviewController {
         stage.setScene(scene);
     }
 
-    public void submitAReview(ActionEvent actionEvent) {
+    public void goSubmitAReview(ActionEvent actionEvent) {
+        try {
+            loadNewScene("SubmitReview.fxml", actionEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void seeAReview(ActionEvent actionEvent) {
@@ -99,15 +104,13 @@ public class CourseReviewController {
 
     public void goBack(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
+            loadNewScene("Login.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // TODO: Add back button on register page (back to login)
+    public void submitAReview(ActionEvent event) {
+    }
+
 }

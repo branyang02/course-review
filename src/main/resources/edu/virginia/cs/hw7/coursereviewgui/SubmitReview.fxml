@@ -13,10 +13,15 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
       stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
-    <Label text="Main Menu" style="-fx-font-size: 24px;"/>
-    <Button id="submitReviewButton" text="Submit a Review" onAction="#goSubmitAReview"/>
-    <Button id="seeReviewsButton" text="See Reviews" onAction="#seeAReview"/>
-    <Button id="logOutButton" text="Log Out" onAction="#logOut"/>
-
-
+    <Label text="Submit A Review" style="-fx-font-size: 24px;"/>
+    <HBox spacing="10.0" alignment="CENTER">
+        <TextField fx:id="courseNameField" promptText="Course Name"/>
+    </HBox>
+    <HBox spacing="10.0" alignment="CENTER">
+        <TextField fx:id="reviewField" promptText="Review"/>
+    </HBox>
+    <HBox spacing="10.0" alignment="CENTER">
+        <TextField fx:id="ratingField" promptText="Rating"/>
+    </HBox>
+    <Button id="submitButton" text="Submit Review" onAction="#submitAReview"/>
 </VBox>

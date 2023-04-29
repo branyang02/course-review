@@ -18,6 +18,8 @@ import java.io.IOException;
 public class CourseReviewController {
     public PasswordField confirmPasswordField;
     public TextField courseNameField;
+    public TextField reviewField;
+    public TextField ratingField;
     @FXML
     private TextField usernameField;
     @FXML
@@ -97,6 +99,11 @@ public class CourseReviewController {
     }
 
     public void seeAReview(ActionEvent actionEvent) {
+        try {
+            loadNewScene("SeeAReview.fxml", actionEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void logOut(ActionEvent actionEvent) {
@@ -113,4 +120,6 @@ public class CourseReviewController {
     public void submitAReview(ActionEvent event) {
     }
 
+    public void checkReviews(ActionEvent event) {
+    }
 }

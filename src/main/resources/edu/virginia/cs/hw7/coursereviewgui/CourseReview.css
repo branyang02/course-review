@@ -30,3 +30,21 @@
     -fx-background-color: #2196F3;
     -fx-text-fill: white;
 }
+
+#submitReviewButton {
+    -fx-font-size: 18px;
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+#seeReviewsButton {
+    -fx-font-size: 18px;
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+
+#logOutButton {
+    -fx-font-size: 18px;
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}

@@ -14,9 +14,9 @@
       stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
     <Label text="Main Menu" style="-fx-font-size: 24px;"/>
-    <Button id="submitReview" text="Submit a Review" onAction="#submitAReview"/>
-    <Button id="seeReviews" text="See Reviews" onAction="#seeAReview"/>
-    <Button id="logOut" text="Log Out" onAction="#logOut"/>
+    <Button id="submitReviewButton" text="Submit a Review" onAction="#submitAReview"/>
+    <Button id="seeReviewsButton" text="See Reviews" onAction="#seeAReview"/>
+    <Button id="logOutButton" text="Log Out" onAction="#logOut"/>
 
 
 </VBox>

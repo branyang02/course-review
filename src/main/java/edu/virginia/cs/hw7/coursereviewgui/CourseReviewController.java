@@ -29,14 +29,21 @@ public class CourseReviewController {
         courseReviewsService = new CourseReviewsService();
     }
 
-    public void loginButtonClicked() {
+    public void loginButtonClicked(ActionEvent event) {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         try {
             courseReviewsService.login(new Student(username, password));
             System.out.println("Login successful!");
-            // TODO: go to main menu with logged in user
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
@@ -70,8 +77,14 @@ public class CourseReviewController {
         try {
             courseReviewsService.register(new Student(username, password));
             System.out.println("Registration successful!");
-            // TODO: Go to main menu with logged in user
-        } catch (Exception e) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+           e.printStackTrace();
+        }catch (Exception e) {
             System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
         }

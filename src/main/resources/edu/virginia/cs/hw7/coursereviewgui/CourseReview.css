@@ -48,3 +48,9 @@
     -fx-background-color: #2196F3;
     -fx-text-fill: white;
 }
+
+#backButton {
+    -fx-font-size: 18px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+}

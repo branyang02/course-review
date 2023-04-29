@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.InterruptedIOException;
 
 public class CourseReviewController {
     public PasswordField confirmPasswordField;
@@ -94,6 +95,18 @@ public class CourseReviewController {
     }
 
     public void logOut(ActionEvent actionEvent) {
+    }
+
+    public void goBack(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // TODO: Add back button on register page (back to login)

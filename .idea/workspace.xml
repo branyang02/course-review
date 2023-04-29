@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviewgui/CourseReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviewgui/CourseReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/CourseReview.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/CourseReview.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/MainMenu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/Register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

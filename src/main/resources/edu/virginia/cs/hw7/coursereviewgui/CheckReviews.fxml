@@ -20,7 +20,7 @@
                    promptText="Course Name" />
     </HBox>
 
-    <Button id="seeReviewsButton" text="See Reviews" onAction="#seeReviews">
+    <Button id="registerButton" text="See Reviews" onAction="#seeReviews">
         <graphic>
             <ImageView>
                 <image>
@@ -30,7 +30,7 @@
         </graphic>
     </Button>
 
-    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu">
+    <Button id="loginButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu">
         <graphic>
             <ImageView>
                 <image>

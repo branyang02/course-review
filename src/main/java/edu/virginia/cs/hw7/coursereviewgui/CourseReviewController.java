@@ -7,6 +7,7 @@ import edu.virginia.cs.hw7.coursereviews.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -203,11 +204,15 @@ public class CourseReviewController {
             label = new Label();
             label.setText(count + ". " + review.getComment());
             label.setFont(Font.font(24));
+            label.setPadding(new Insets(5));
+            label.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 10px;");
             reviewsContainer.getChildren().add(label);
             rating += review.getRating();
         }
         label = new Label("Course Average: " + rating/count + "/5");
         label.setFont(Font.font(24));
+        label.setPadding(new Insets(5));
+        label.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 10px;");
         reviewsContainer.getChildren().add(label);
 
     }

@@ -26,7 +26,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'edu.virginia.cs.hw7.coursereviewgui'
-    mainClass = 'edu.virginia.cs.hw7.coursereviewgui.HelloApplication'
+    mainClass = 'edu.virginia.cs.hw7.coursereviewgui.CourseReviewApplication'
 }
 
 javafx {

@@ -12,8 +12,8 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
       stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
-    <Label text="Register" style="-fx-font-size: 40px;"/>
-    <HBox spacing="10.0" alignment="CENTER">
+    <Label id="upperDisplayText" text="Register" style="-fx-font-size: 40px;"/>
+    <HBox spacing="10.0" alignment="CENTER" style="-fx-translate-x: -25">
         <Label>
             <graphic>
                 <ImageView fitHeight="35" fitWidth="35">
@@ -23,7 +23,7 @@
         </Label>
         <TextField fx:id="usernameField" promptText="Username" style="-fx-font-size: 18px;"/>
     </HBox>
-    <HBox spacing="10.0" alignment="CENTER">
+    <HBox spacing="10.0" alignment="CENTER" style="-fx-translate-x: -25">
         <Label>
             <graphic>
                 <ImageView fitHeight="35" fitWidth="35">
@@ -33,7 +33,7 @@
         </Label>
         <PasswordField fx:id="passwordField" promptText="Password" style="-fx-font-size: 18px;"/>
     </HBox>
-    <HBox spacing="10.0" alignment="CENTER">
+    <HBox spacing="10.0" alignment="CENTER" style="-fx-translate-x: -25">
         <Label>
             <graphic>
                 <ImageView fitHeight="35" fitWidth="35">
@@ -43,7 +43,23 @@
         </Label>
         <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" style="-fx-font-size: 18px;"/>
     </HBox>
-    <Button id="registerButton" text="Register" onAction="#registerStudent"/>
-    <Button id="backButton" text="Go Back To Login" onAction="#goBackToLogin"/>
+    <Button id="registerButton2" text="Register" onAction="#registerStudent">
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@icons8-add-user-male-50.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button id="backButton" text="Go Back To Login" onAction="#goBackToLogin">
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@icons8-left-50.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
     <Label fx:id="errorMessage" textFill="RED"/>
 </VBox>

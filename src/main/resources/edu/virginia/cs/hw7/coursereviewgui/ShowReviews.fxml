@@ -14,7 +14,7 @@
       stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
     <VBox alignment="CENTER" fx:id="reviewsContainer">
-        <Label text="Reviews" style="-fx-font-size: 40px;"/>
+        <Label id="upperDisplayText" text="Reviews" style="-fx-font-size: 40px;"/>
     </VBox>
-    <Button fx:id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu"/>
+    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu"/>
 </VBox>

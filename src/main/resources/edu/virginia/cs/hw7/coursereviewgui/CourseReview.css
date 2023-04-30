@@ -6,8 +6,10 @@
     -fx-border-width: 2px;
 }
 
-#welcomeText {
-    -fx-font-size: 24px;
+#upperDisplayText {
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #006699;
 }
 
 #Hbox {
@@ -21,48 +23,63 @@
 
 #loginButton {
     -fx-font-size: 18px;
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #2196F3;
     -fx-text-fill: white;
+    -fx-background-radius: 10px;
 }
 
 #registerButton {
     -fx-font-size: 18px;
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-background-radius: 10px;
+}
+
+#registerButton2 {
+    -fx-font-size: 18px;
     -fx-background-color: #2196F3;
     -fx-text-fill: white;
+    -fx-background-radius: 10px;
 }
 
 #submitReviewButton {
     -fx-font-size: 18px;
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
+    -fx-background-radius: 10px;
 }
 
 #checkReviewsButton {
     -fx-font-size: 18px;
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #2196F3;
     -fx-text-fill: white;
+    -fx-background-radius: 10px;
 }
 
 #logOutButton {
     -fx-font-size: 18px;
-    -fx-background-color: #2196F3;
+    -fx-background-color: #f44336;
     -fx-text-fill: white;
+    -fx-background-radius: 10px;
 }
 
 #backButton {
     -fx-font-size: 18px;
-    -fx-background-color: #2196F3;
+    -fx-background-color: #4CAF50;
     -fx-text-fill: white;
+    -fx-background-radius: 10px;
 }
 
 #submitButton {
     -fx-font-size: 18px;
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #2196F3;
     -fx-text-fill: white;
+    -fx-background-radius: 10px;
 }
 
 #seeReviewsButton {
     -fx-font-size: 18px;
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #2196F3;
     -fx-text-fill: white;
+    -fx-background-radius: 10px;
 }

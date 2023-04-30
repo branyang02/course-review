@@ -2,10 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
@@ -13,9 +10,35 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
       stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
-    <Label text="Main Menu" style="-fx-font-size: 40px;"/>
-    <Button id="submitReviewButton" text="Submit a Review" onAction="#goSubmitAReview"/>
-    <Button id="checkReviewsButton" text="Check Reviews" onAction="#checkAReview"/>
-    <Button id="logOutButton" text="Log Out" onAction="#logOut"/>
+    <Label id="upperDisplayText" text="Main Menu" style="-fx-font-size: 40px;"/>
 
+    <VBox alignment="CENTER" spacing="20.0">
+        <Button id="submitReviewButton" text="Submit a Review" onAction="#goSubmitAReview">
+            <graphic>
+                <ImageView>
+                    <image>
+                        <Image url="@icons8-submit-for-approval-50.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button id="checkReviewsButton" text="Check Reviews" onAction="#checkAReview">
+            <graphic>
+                <ImageView>
+                    <image>
+                        <Image url="@icons8-search-50.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button id="logOutButton" text="Log Out" onAction="#logOut">
+            <graphic>
+                <ImageView>
+                    <image>
+                        <Image url="@icons8-logout-rounded-left-50.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </VBox>
 </VBox>

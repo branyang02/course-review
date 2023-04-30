@@ -13,11 +13,33 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
       stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
-    <Label text="Look At Reviews" style="-fx-font-size: 24px;"/>
+    <Label id="upperDisplayText" text="Look At Reviews" style="-fx-font-size: 40px;"/>
+
     <HBox spacing="10.0" alignment="CENTER">
-        <TextField fx:id="courseNameField" promptText="Course Name"/>
+        <TextField fx:id="courseNameField" style="-fx-font-size: 18px; -fx-prompt-text-fill: gray;"
+                   promptText="Course Name" />
     </HBox>
-    <Button id="seeReviewsButton" text="See Reviews" onAction="#seeReviews"/>
-    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu"/>
-    <Label fx:id="errorMessage" textFill="RED"/>
+
+    <Button id="seeReviewsButton" text="See Reviews" onAction="#seeReviews">
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@icons8-search-50.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu">
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@icons8-left-50.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Label fx:id="errorMessage" style="-fx-font-size: 18px; -fx-text-fill: red;"/>
+
 </VBox>

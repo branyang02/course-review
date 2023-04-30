@@ -1,29 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
-
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
       stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
-    <Label text="Submit A Review" style="-fx-font-size: 24px;"/>
+    <Label id="upperDisplayText" text="Submit A Review" style="-fx-font-size: 40px;"/>
+
     <HBox spacing="10.0" alignment="CENTER">
-        <TextField fx:id="courseNameField" promptText="Course Name"/>
+        <TextField fx:id="courseNameField" style="-fx-font-size: 18px; -fx-prompt-text-fill: gray;"
+                   promptText="Course Name" />
     </HBox>
+
     <HBox spacing="10.0" alignment="CENTER">
-        <TextField fx:id="reviewField" promptText="Review"/>
+        <TextField fx:id="reviewField" style="-fx-font-size: 18px; -fx-prompt-text-fill: gray;"
+                   promptText="Review" />
     </HBox>
+
     <HBox spacing="10.0" alignment="CENTER">
-        <TextField fx:id="ratingField" promptText="Rating"/>
+        <TextField fx:id="ratingField" style="-fx-font-size: 18px; -fx-prompt-text-fill: gray;"
+                   promptText="Rating" />
     </HBox>
-    <Button id="submitButton" text="Submit Review" onAction="#submitAReview"/>
-    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu"/>
-    <Label fx:id="errorMessage" textFill="RED"/>
+
+    <Button id="submitButton" text="Submit Review" onAction="#submitAReview">
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@icons8-submit-for-approval-50.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu">
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@icons8-left-50.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+
+    <Label fx:id="errorMessage" style="-fx-font-size: 18px; -fx-text-fill: red;"/>
 </VBox>

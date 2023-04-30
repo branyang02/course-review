@@ -40,8 +40,6 @@ public class CourseReviewController {
     private final CourseReviewsService courseReviewsService;
     @FXML
     public VBox reviewsContainer;
-    @FXML
-    Button backButton;
 
     public CourseReviewController() {
         courseReviewsService = CourseReviewsService.getInstance();

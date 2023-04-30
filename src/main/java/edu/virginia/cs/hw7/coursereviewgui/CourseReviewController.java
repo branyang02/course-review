@@ -214,6 +214,7 @@ public class CourseReviewController {
             label.setFont(Font.font(24));
             label.setPadding(new Insets(5));
             label.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 10px;");
+            label.setWrapText(true);
             scrollContent.getChildren().add(label);
             rating += review.getRating();
         }

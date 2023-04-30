@@ -7,7 +7,7 @@ public class UserInterface {
     private final Scanner scanner;
 
     public UserInterface() {
-        courseReviewsService = new CourseReviewsService();
+        courseReviewsService = CourseReviewsService.getInstance();
         scanner = new Scanner(System.in);
     }
 

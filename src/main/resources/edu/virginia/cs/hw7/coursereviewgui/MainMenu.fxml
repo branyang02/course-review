@@ -18,5 +18,4 @@
     <Button id="checkReviewsButton" text="Check Reviews" onAction="#checkAReview"/>
     <Button id="logOutButton" text="Log Out" onAction="#logOut"/>
 
-
 </VBox>

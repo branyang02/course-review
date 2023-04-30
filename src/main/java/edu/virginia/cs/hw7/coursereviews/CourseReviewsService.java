@@ -7,7 +7,16 @@ public class CourseReviewsService {
     private final CourseManager courseManager;
     private final ReviewsManager reviewManager;
     private Student loggedInStudent;
-    public CourseReviewsService() {
+
+    private static CourseReviewsService instance;
+
+    public static synchronized CourseReviewsService getInstance() {
+        if (instance == null) {
+            instance = new CourseReviewsService();
+        }
+        return instance;
+    }
+    private CourseReviewsService() {
         DatabaseManager db = new DatabaseManager();
 //        setupDatabase(db);
         studentManager = new StudentManager(db);

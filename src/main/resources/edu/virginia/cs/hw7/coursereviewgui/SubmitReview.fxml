@@ -25,4 +25,5 @@
     </HBox>
     <Button id="submitButton" text="Submit Review" onAction="#submitAReview"/>
     <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu"/>
+    <Label fx:id="errorMessage" textFill="RED"/>
 </VBox>

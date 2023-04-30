@@ -1,6 +1,8 @@
 package edu.virginia.cs.hw7.coursereviewgui;
 
+import edu.virginia.cs.hw7.coursereviews.Course;
 import edu.virginia.cs.hw7.coursereviews.CourseReviewsService;
+import edu.virginia.cs.hw7.coursereviews.Review;
 import edu.virginia.cs.hw7.coursereviews.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,8 +19,11 @@ import java.io.IOException;
 
 public class CourseReviewController {
     public PasswordField confirmPasswordField;
+    @FXML
     public TextField courseNameField;
+    @FXML
     public TextField reviewField;
+    @FXML
     public TextField ratingField;
     @FXML
     private TextField usernameField;
@@ -29,7 +34,7 @@ public class CourseReviewController {
     private final CourseReviewsService courseReviewsService;
 
     public CourseReviewController() {
-        courseReviewsService = new CourseReviewsService();
+        courseReviewsService = CourseReviewsService.getInstance();
     }
 
     public void loginButtonClicked(ActionEvent event) {
@@ -37,7 +42,8 @@ public class CourseReviewController {
         String password = passwordField.getText();
 
         try {
-            courseReviewsService.login(new Student(username, password));
+            Student currentStudent = new Student(username, password);
+            courseReviewsService.login(currentStudent);
             System.out.println("Login successful!");
 
             loadNewScene("MainMenu.fxml", event);
@@ -90,6 +96,16 @@ public class CourseReviewController {
         stage.setScene(scene);
     }
 
+    private void loadNewScene(String name, ActionEvent event, String error) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(name));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        CourseReviewController controller = loader.getController();
+        controller.errorMessage.setText(error);
+    }
+
     public void goSubmitAReview(ActionEvent actionEvent) {
         try {
             loadNewScene("SubmitReview.fxml", actionEvent);
@@ -131,8 +147,41 @@ public class CourseReviewController {
     }
 
     public void submitAReview(ActionEvent event) {
+        String courseName = courseNameField.getText();
+        String comment = reviewField.getText();
+        String rating = ratingField.getText();
+        Course course;
+        Review review;
+
+        try {
+            course = courseReviewsService.validateCourseName(courseName);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            errorMessage.setText(e.getMessage());
+            return;
+        }
+        try {
+            review = courseReviewsService.validateReview(course, comment, rating);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            errorMessage.setText(e.getMessage());
+            return;
+        }
+
+        try {
+            courseReviewsService.submitReview(review);
+            System.out.println("Review Submitted!");
+
+            loadNewScene("MainMenu.fxml", event);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            errorMessage.setText(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void seeReviews(ActionEvent event) {
+
     }
 }

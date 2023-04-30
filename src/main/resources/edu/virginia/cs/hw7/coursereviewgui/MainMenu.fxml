@@ -13,7 +13,7 @@
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml" fx:controller="edu.virginia.cs.hw7.coursereviewgui.CourseReviewController"
       stylesheets="@CourseReview.css"
       prefWidth="800" prefHeight="600">
-    <Label text="Main Menu" style="-fx-font-size: 24px;"/>
+    <Label text="Main Menu" style="-fx-font-size: 40px;"/>
     <Button id="submitReviewButton" text="Submit a Review" onAction="#goSubmitAReview"/>
     <Button id="checkReviewsButton" text="Check Reviews" onAction="#checkAReview"/>
     <Button id="logOutButton" text="Log Out" onAction="#logOut"/>

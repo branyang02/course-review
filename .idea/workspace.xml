@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23d7827f-ef68-491d-9ecd-a5ec29612038" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5e11449e-53f7-4d6f-80a0-3a5e323f8516.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/ShowReviews.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reviews.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Reviews.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviewgui/CourseReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviewgui/CourseReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/CourseReviewsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/CourseReviewsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviews/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/CourseReview.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/CourseReview.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/CheckReviews.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/CheckReviews.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/MainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/SubmitReview.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/SubmitReview.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/edu/virginia/cs/hw7/coursereviewgui/Register.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +130,8 @@
       <workItem from="1682261620196" duration="4678000" />
       <workItem from="1682521767811" duration="16756000" />
       <workItem from="1682806681908" duration="9266000" />
-      <workItem from="1682817579030" duration="1049000" />
+      <workItem from="1682817579030" duration="2087000" />
+      <workItem from="1682819784930" duration="5411000" />
     </task>
     <servers />
   </component>

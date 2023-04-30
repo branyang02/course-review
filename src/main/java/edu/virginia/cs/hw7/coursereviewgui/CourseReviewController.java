@@ -7,15 +7,21 @@ import edu.virginia.cs.hw7.coursereviews.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CourseReviewController {
     public PasswordField confirmPasswordField;
@@ -32,6 +38,10 @@ public class CourseReviewController {
     @FXML
     private Label errorMessage;
     private final CourseReviewsService courseReviewsService;
+    @FXML
+    public VBox reviewsContainer;
+    @FXML
+    Button backButton;
 
     public CourseReviewController() {
         courseReviewsService = CourseReviewsService.getInstance();
@@ -182,6 +192,46 @@ public class CourseReviewController {
     }
 
     public void seeReviews(ActionEvent event) {
+        String courseName = courseNameField.getText();
+        Course course;
+        Label label;
+        reviewsContainer = new VBox();
+
+        try {
+            course = courseReviewsService.validateCourseName(courseName);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            errorMessage.setText(e.getMessage());
+            return;
+        }
+        List<Review> reviews = courseReviewsService.getReviews(course);
+        if (reviews.isEmpty()) {
+            System.out.println("No reviews found.");
+            errorMessage.setText("No reviews found");
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowReviews.fxml"));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        reviewsContainer = loader.getRoot();
+        int count = 0;
+        double rating = 0.0;
+        for (Review review : reviews) {
+            count++;
+            label = new Label();
+            label.setText(count + ". " + review.getComment());
+            label.setFont(Font.font(24));
+            reviewsContainer.getChildren().add(label);
+            rating += review.getRating();
+        }
+        label = new Label("Course Average: " + rating/count + "/5");
+        label.setFont(Font.font(24));
+        reviewsContainer.getChildren().add(label);
 
     }
 }

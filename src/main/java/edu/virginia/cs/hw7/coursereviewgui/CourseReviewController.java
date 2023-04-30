@@ -106,16 +106,6 @@ public class CourseReviewController {
         stage.setScene(scene);
     }
 
-    private void loadNewScene(String name, ActionEvent event, String error) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(name));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        CourseReviewController controller = loader.getController();
-        controller.errorMessage.setText(error);
-    }
-
     public void goSubmitAReview(ActionEvent actionEvent) {
         try {
             loadNewScene("SubmitReview.fxml", actionEvent);

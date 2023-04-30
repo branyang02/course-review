@@ -54,13 +54,11 @@ public class CourseReviewController {
         try {
             Student currentStudent = new Student(username, password);
             courseReviewsService.login(currentStudent);
-            System.out.println("Login successful!");
 
             loadNewScene("MainMenu.fxml", event);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
         }
     }
@@ -80,20 +78,17 @@ public class CourseReviewController {
         String password2 = confirmPasswordField.getText();
 
         if (!password.equals(password2)) {
-            System.out.println("Passwords do not match.");
             errorMessage.setText("Passwords do not match.");
             return;
         }
 
         try {
             courseReviewsService.register(new Student(username, password));
-            System.out.println("Registration successful!");
 
             loadNewScene("MainMenu.fxml", event);
         } catch (IOException e) {
            e.printStackTrace();
         }catch (Exception e) {
-            System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
         }
     }
@@ -156,25 +151,21 @@ public class CourseReviewController {
         try {
             course = courseReviewsService.validateCourseName(courseName);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
             return;
         }
         try {
             review = courseReviewsService.validateReview(course, comment, rating);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
             return;
         }
 
         try {
             courseReviewsService.submitReview(review);
-            System.out.println("Review Submitted!");
 
             loadNewScene("MainMenu.fxml", event);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
@@ -190,13 +181,11 @@ public class CourseReviewController {
         try {
             course = courseReviewsService.validateCourseName(courseName);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
             errorMessage.setText(e.getMessage());
             return;
         }
         List<Review> reviews = courseReviewsService.getReviews(course);
         if (reviews.isEmpty()) {
-            System.out.println("No reviews found.");
             errorMessage.setText("No reviews found");
         }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowReviews.fxml"));

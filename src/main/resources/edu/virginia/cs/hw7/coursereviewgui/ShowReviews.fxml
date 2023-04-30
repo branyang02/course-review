@@ -16,5 +16,13 @@
     <VBox alignment="CENTER" fx:id="reviewsContainer">
         <Label id="upperDisplayText" text="Reviews" style="-fx-font-size: 40px;"/>
     </VBox>
-    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu"/>
+    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu">
+        <graphic>
+            <ImageView>
+                <image>
+                    <Image url="@icons8-left-50.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
 </VBox>

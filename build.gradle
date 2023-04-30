@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'edu.virginia.cs.hw7'
-version '1.0-SNAPSHOT'
+//version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -28,6 +28,23 @@ application {
     mainModule = 'edu.virginia.cs.hw7.coursereviewgui'
     mainClass = 'edu.virginia.cs.hw7.coursereviewgui.CourseReviewApplication'
 }
+
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'edu.virginia.cs.hw7.coursereviews.CommandLineCourseReview'
+        )
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+}
+
 
 javafx {
     version = '17.0.2'

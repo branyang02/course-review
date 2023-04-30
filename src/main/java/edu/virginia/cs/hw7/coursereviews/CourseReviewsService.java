@@ -104,7 +104,8 @@ public class CourseReviewsService {
         if (count == 0) {
             return 0;
         }
-        return total / count;
+        double average = total / count;
+        return Math.round(average * 10.0) / 10.0;
     }
 
     public Course validateCourseName(String courseName) {

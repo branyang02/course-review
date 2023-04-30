@@ -12,11 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -38,6 +34,8 @@ public class CourseReviewController {
     private PasswordField passwordField;
     @FXML
     private Label errorMessage;
+    @FXML
+    private Label feedbackMessage;
     private final CourseReviewsService courseReviewsService;
     @FXML
     public VBox reviewsContainer;
@@ -164,11 +162,13 @@ public class CourseReviewController {
             courseReviewsService.submitReview(review);
 
             loadNewScene("MainMenu.fxml", event);
+
         } catch (IllegalArgumentException e) {
             errorMessage.setText(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void seeReviews(ActionEvent event) {
@@ -176,6 +176,8 @@ public class CourseReviewController {
         Course course;
         Label label;
         reviewsContainer = new VBox();
+        ScrollPane scrollPane = new ScrollPane();
+        VBox scrollContent = new VBox();
 
         try {
             course = courseReviewsService.validateCourseName(courseName);
@@ -212,9 +214,17 @@ public class CourseReviewController {
             label.setFont(Font.font(24));
             label.setPadding(new Insets(5));
             label.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 10px;");
-            reviewsContainer.getChildren().add(label);
+            scrollContent.getChildren().add(label);
             rating += review.getRating();
         }
+        scrollContent.setAlignment(Pos.CENTER);
+        scrollContent.setSpacing(10);
+
+        scrollPane.setContent(scrollContent);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setPrefSize(800,600);
+        reviewsContainer.getChildren().add(scrollPane);
+
         label = new Label("Course Average: " + rating/count + "/5");
         label.setFont(Font.font(24));
         label.setPadding(new Insets(5));

@@ -13,7 +13,7 @@
     <Label id="upperDisplayText" text="Main Menu" style="-fx-font-size: 40px;"/>
 
     <VBox alignment="CENTER" spacing="20.0">
-        <Button id="submitReviewButton" text="Submit a Review" onAction="#goSubmitAReview">
+        <Button id="loginButton" text="Submit a Review" onAction="#goSubmitAReview">
             <graphic>
                 <ImageView>
                     <image>
@@ -22,7 +22,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button id="checkReviewsButton" text="Check Reviews" onAction="#checkAReview">
+        <Button id="registerButton" text="Check Reviews" onAction="#checkAReview">
             <graphic>
                 <ImageView>
                     <image>

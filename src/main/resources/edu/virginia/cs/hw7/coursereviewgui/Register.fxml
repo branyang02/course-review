@@ -43,7 +43,7 @@
         </Label>
         <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" style="-fx-font-size: 18px;"/>
     </HBox>
-    <Button id="registerButton2" text="Register" onAction="#registerStudent">
+    <Button id="registerButton" text="Register" onAction="#registerStudent">
         <graphic>
             <ImageView>
                 <image>
@@ -52,7 +52,7 @@
             </ImageView>
         </graphic>
     </Button>
-    <Button id="backButton" text="Go Back To Login" onAction="#goBackToLogin">
+    <Button id="loginButton" text="Go Back To Login" onAction="#goBackToLogin">
         <graphic>
             <ImageView>
                 <image>

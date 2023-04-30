@@ -26,7 +26,7 @@
                    promptText="Rating" />
     </HBox>
 
-    <Button id="submitButton" text="Submit Review" onAction="#submitAReview">
+    <Button id="registerButton" text="Submit Review" onAction="#submitAReview">
         <graphic>
             <ImageView>
                 <image>
@@ -36,7 +36,7 @@
         </graphic>
     </Button>
 
-    <Button id="backButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu">
+    <Button id="loginButton" text="Go Back To Main Menu" onAction="#goBackToMainMenu">
         <graphic>
             <ImageView>
                 <image>

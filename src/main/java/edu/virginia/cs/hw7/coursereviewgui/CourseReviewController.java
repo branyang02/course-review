@@ -183,10 +183,16 @@ public class CourseReviewController {
             errorMessage.setText(e.getMessage());
             return;
         }
-        List<Review> reviews = courseReviewsService.getReviews(course);
-        if (reviews.isEmpty()) {
+
+        List<Review> reviews;
+
+        try {
+            reviews = courseReviewsService.getReviews(course);
+        } catch (RuntimeException e) {
             errorMessage.setText("No reviews found");
+            return;
         }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowReviews.fxml"));
         try {
             Parent root = loader.load();

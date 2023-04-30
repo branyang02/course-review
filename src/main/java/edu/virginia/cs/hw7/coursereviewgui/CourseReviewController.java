@@ -206,7 +206,6 @@ public class CourseReviewController {
         }
         reviewsContainer = loader.getRoot();
         int count = 0;
-        double rating = 0.0;
         for (Review review : reviews) {
             count++;
             label = new Label();
@@ -216,7 +215,6 @@ public class CourseReviewController {
             label.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 10px;");
             label.setWrapText(true);
             scrollContent.getChildren().add(label);
-            rating += review.getRating();
         }
         scrollContent.setAlignment(Pos.CENTER);
         scrollContent.setSpacing(10);
@@ -226,7 +224,7 @@ public class CourseReviewController {
         scrollPane.setPrefSize(800,600);
         reviewsContainer.getChildren().add(scrollPane);
 
-        label = new Label("Course Average: " + rating/count + "/5");
+        label = new Label("Course Average: " + courseReviewsService.getAverageRating(course) + "/5");
         label.setFont(Font.font(24));
         label.setPadding(new Insets(5));
         label.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 10px;");

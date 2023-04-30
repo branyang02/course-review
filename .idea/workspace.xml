@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="23d7827f-ef68-491d-9ecd-a5ec29612038" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reviews.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Reviews.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviewgui/CourseReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/virginia/cs/hw7/coursereviewgui/CourseReviewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +130,8 @@
       <workItem from="1682819784930" duration="15337000" />
       <workItem from="1682874309087" duration="135000" />
       <workItem from="1682874608493" duration="957000" />
-      <workItem from="1682881145408" duration="1273000" />
+      <workItem from="1682881145408" duration="1590000" />
+      <workItem from="1682892294003" duration="282000" />
     </task>
     <servers />
   </component>

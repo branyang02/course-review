@@ -13,12 +13,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class CourseReviewController {
     public PasswordField confirmPasswordField;
@@ -210,9 +215,10 @@ public class CourseReviewController {
             count++;
             label = new Label();
             label.setText(count + ". " + review.getComment() + " " + review.getRating() + "/5");
-            label.setFont(Font.font(24));
+            label.setFont(Font.font(18));
             label.setPadding(new Insets(5));
-            label.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 10px;");
+//            label.setStyle("-fx-background-color: #2196F3; -fx-text-fill: white; -fx-background-radius: 10px;");
+            label.setStyle("-fx-text-fill: black");
             label.setWrapText(true);
             scrollContent.getChildren().add(label);
         }
@@ -227,8 +233,89 @@ public class CourseReviewController {
         label = new Label("Course Average: " + courseReviewsService.getAverageRating(course) + "/5");
         label.setFont(Font.font(24));
         label.setPadding(new Insets(5));
-        label.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 10px;");
-        reviewsContainer.getChildren().add(label);
+//        label.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 10px;");
+        label.setStyle("-fx-text-fill: black");
+        HBox hbox = new HBox();
+        hbox.setAlignment(Pos.CENTER);
+        hbox.getChildren().addAll(label, createStarContainer(course));
 
+        reviewsContainer.getChildren().add(hbox);
+
+        reviewsContainer.setPadding(new Insets(0, 0, 20, 0));
     }
+
+    private HBox createStarContainer(Course course) {
+        HBox starContainer = new HBox();
+        starContainer.setSpacing(3);
+        starContainer.setAlignment(Pos.CENTER);
+        ImageView star1 = new ImageView();
+        star1.setId("star1");
+        star1.setFitHeight(30);
+        star1.setFitWidth(30);
+        star1.setImage(new Image(Objects.requireNonNull(getClass().getResource("empty-star.png")).toString()));
+
+        ImageView star2 = new ImageView();
+        star2.setId("star2");
+        star2.setFitHeight(30);
+        star2.setFitWidth(30);
+        star2.setImage(new Image(Objects.requireNonNull(getClass().getResource("empty-star.png")).toString()));
+
+        ImageView star3 = new ImageView();
+        star3.setId("star3");
+        star3.setFitHeight(30);
+        star3.setFitWidth(30);
+        star3.setImage(new Image(Objects.requireNonNull(getClass().getResource("empty-star.png")).toString()));
+
+        ImageView star4 = new ImageView();
+        star4.setId("star4");
+        star4.setFitHeight(30);
+        star4.setFitWidth(30);
+        star4.setImage(new Image(Objects.requireNonNull(getClass().getResource("empty-star.png")).toString()));
+
+        ImageView star5 = new ImageView();
+        star5.setId("star5");
+        star5.setFitHeight(30);
+        star5.setFitWidth(30);
+        star5.setImage(new Image(Objects.requireNonNull(getClass().getResource("empty-star.png")).toString()));
+
+        starContainer.getChildren().addAll(star1, star2, star3, star4, star5);
+
+        double rating = courseReviewsService.getAverageRating(course);
+
+        if (rating >= 0.5) {
+            star1.setImage(new Image(Objects.requireNonNull(getClass().getResource("half-star.png")).toString()));
+        }
+        if (rating >= 1) {
+            star1.setImage(new Image(Objects.requireNonNull(getClass().getResource("full-star.png")).toString()));
+        }
+        if (rating >= 1.5) {
+            star2.setImage(new Image(Objects.requireNonNull(getClass().getResource("half-star.png")).toString()));
+        }
+        if (rating >= 2) {
+            star2.setImage(new Image(Objects.requireNonNull(getClass().getResource("full-star.png")).toString()));
+        }
+        if (rating >= 2.5) {
+            star3.setImage(new Image(Objects.requireNonNull(getClass().getResource("half-star.png")).toString()));
+        }
+        if (rating >= 3) {
+            star3.setImage(new Image(Objects.requireNonNull(getClass().getResource("full-star.png")).toString()));
+        }
+        if (rating >= 3.5) {
+            star4.setImage(new Image(Objects.requireNonNull(getClass().getResource("half-star.png")).toString()));
+        }
+        if (rating >= 4) {
+            star4.setImage(new Image(Objects.requireNonNull(getClass().getResource("full-star.png")).toString()));
+        }
+        if (rating >= 4.5) {
+            star5.setImage(new Image(Objects.requireNonNull(getClass().getResource("half-star.png")).toString()));
+        }
+        if (rating >= 5) {
+            star5.setImage(new Image(Objects.requireNonNull(getClass().getResource("full-star.png")).toString()));
+        }
+
+
+        return starContainer;
+    }
+
+
 }

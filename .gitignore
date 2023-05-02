@@ -106,3 +106,6 @@ Temporary Items
 /.idea/misc.xml
 /.idea/compiler.xml
 /.idea/jarRepositories.xml
+
+# Temporary sql used for testing
+Reviews_backup.sqlite3

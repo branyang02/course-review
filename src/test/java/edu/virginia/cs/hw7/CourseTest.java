@@ -1,52 +1,41 @@
 package edu.virginia.cs.hw7;
 
 import edu.virginia.cs.hw7.coursereviews.Course;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CourseTest {
 
-    @Test
-    public void testGetDepartment() {
-        String department = "CS";
-        int catalogNumber = 2150;
-        Course course = new Course(department, catalogNumber);
-        Assertions.assertEquals(department, course.getDepartment());
+    private Course course;
+
+    @BeforeEach
+    public void setUp() {
+        course = new Course("CS", 101);
     }
 
     @Test
-    public void testGetCatalogNumber() {
-        String department = "CS";
-        int catalogNumber = 2150;
-        Course course = new Course(department, catalogNumber);
-        Assertions.assertEquals(catalogNumber, course.getCatalogNumber());
+    public void testConstructorAndGetters() {
+        assertEquals("CS", course.getDepartment());
+        assertEquals(101, course.getCatalogNumber());
     }
 
     @Test
-    public void testSetDepartment() {
-        String department = "CS";
-        int catalogNumber = 2150;
-        Course course = new Course(department, catalogNumber);
-        String newDepartment = "ECE";
-        course.setDepartment(newDepartment);
-        Assertions.assertEquals(newDepartment, course.getDepartment());
-    }
+    public void testSetters() {
+        course.setDepartment("MATH");
+        course.setCatalogNumber(201);
 
-    @Test
-    public void testSetCatalogNumber() {
-        String department = "CS";
-        int catalogNumber = 2150;
-        Course course = new Course(department, catalogNumber);
-        int newCatalogNumber = 2160;
-        course.setCatalogNumber(newCatalogNumber);
-        Assertions.assertEquals(newCatalogNumber, course.getCatalogNumber());
+        assertEquals("MATH", course.getDepartment());
+        assertEquals(201, course.getCatalogNumber());
     }
 
     @Test
     public void testToString() {
-        String department = "CS";
-        int catalogNumber = 2150;
-        Course course = new Course(department, catalogNumber);
-        Assertions.assertEquals("Course: " + department + " " + catalogNumber, course.toString());
+        assertEquals("Course: CS 101", course.toString());
+
+        course.setDepartment("MATH");
+        course.setCatalogNumber(201);
+        assertEquals("Course: MATH 201", course.toString());
     }
 }

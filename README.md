@@ -35,7 +35,4 @@ This command will launch the application with either the GUI or the command line
 
 7. Follow the instructions on the screen to use the application.
 
-**Note:** If you encounter any issues while running the application, make sure to check that you have the correct version of Java installed on your system. The application requires Java 17 or later to run.
-
-
 

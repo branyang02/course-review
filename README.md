@@ -21,18 +21,13 @@ To run the CourseReview application, please follow these instructions:
 ./gradlew build
 ```
 
-5. Once the build is complete, navigate to the `build/libs` directory using the command:
+5. To run the application, use the following command:
 ```bash
-cd build/libs
-```
-
-6. To run the application, use the following command:
-```bash
-java -jar CourseReview.jar [-g|--gui|-c|--command]
+java -jar ./build/libs/CourseReview.jar [-g|--gui|-c|--command]
 ```
 
 This command will launch the application with either the GUI or the command line interface. Use the "-g" or "--gui" flag to launch the GUI interface, and use the "-c" or "--command" flag to launch the command line interface.
 
-7. Follow the instructions on the screen to use the application.
+6. Follow the instructions on the screen to use the application.
 
 

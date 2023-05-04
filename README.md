@@ -28,7 +28,7 @@ java -jar ./build/libs/CourseReview.jar [-g|--gui|-c|--command]
 
 This command will launch the application with either the GUI or the command line interface. Use the "-g" or "--gui" flag to launch the GUI interface, and use the "-c" or "--command" flag to launch the command line interface.
 
-**Note: ** Do not navigate into the build/libs directory first and then run java -jar. Instead, run the command from the main project directory following the instruction above.
+**Note:** Do not navigate into the build/libs directory first and then run java -jar. Instead, run the command from the main project directory following the instruction above.
 
 6. Follow the instructions on the screen to use the application.
 

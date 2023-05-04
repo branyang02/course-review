@@ -20,10 +20,13 @@ public class CourseReviewsServiceTest {
 
     @BeforeEach
     public void setUp() {
+        db = new DatabaseManager();
+        initializeDatabase(db);
+
         databaseBackup = new DatabaseBackup();
         databaseBackup.backupDatabase();
 
-        db = new DatabaseManager();
+
         studentManager = new StudentManager(db);
         courseManager = new CourseManager(db);
         reviewManager = new ReviewsManager(db);
@@ -41,6 +44,12 @@ public class CourseReviewsServiceTest {
         db.connect();
         db.createTables();
         db.populateDatabase();
+        db.disconnect();
+    }
+
+    private void initializeDatabase(DatabaseManager db) {
+        db.connect();
+        db.createTables();
         db.disconnect();
     }
 

@@ -1,4 +1,4 @@
-# HW7 - Course Review
+# Course Review
 
 ## Authors
 

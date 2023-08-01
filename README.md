@@ -6,6 +6,12 @@
 * Author 2 - Brandon Yang - jqm9ba
 * Author 3 - Jacob Wald - vug5ue
 
+## Tech Stack
+| Frontend | Backend | Tools |
+| -------- | -------- | -----|
+|   |   |[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/en/)    |
+
+
 # CourseReview Application
 
 To run the CourseReview application, please follow these instructions:

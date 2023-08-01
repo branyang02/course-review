@@ -9,7 +9,10 @@
 ## Tech Stack
 | Frontend | Backend | Tools |
 | -------- | -------- | -----|
-|   |   |[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.java.com/en/)    |
+|[![JavaFX](https://img.shields.io/badge/JavaFX-007396?style=for-the-badge&logo=Java&logoColor=white)](https://www.java.com/en/)  | [![SQLite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/index.html)  |[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=Java&logoColor=white)](https://www.java.com/en/)    |
+|  |[![JDBC](https://img.shields.io/badge/JDBC-ED8B00?style=for-the-badge&logo=Java&logoColor=white)](https://docs.oracle.com/javase/tutorial/jdbc/basics/index.html)   |[![Gradle](https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white)](https://gradle.org/)|
+|  | [![Mockito](https://img.shields.io/badge/Mockito-02303A?style=for-the-badge&logo=java&logoColor=white)](https://site.mockito.org/) | [![JUnite](https://img.shields.io/badge/Junit5-25A162?style=for-the-badge&logo=junit5&logoColor=white)](https://junit.org/junit5/) |
+
 
 
 # CourseReview Application
